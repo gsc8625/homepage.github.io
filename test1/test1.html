@@ -25,8 +25,8 @@
 
     <meta name="author" content="quizzment">
    
-    <link rel="canonical" href="https://quizzment.com/test1.html" />
-    <meta property="og:url" content="https://quizzment.com/test1.html" />
+    <link rel="canonical" href="https://quizzment.com/test1/test1.html" />
+    <meta property="og:url" content="https://quizzment.com/test1/test1.html" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="얼굴 프로필 테스트" />
     <meta property="og:description" content="얼굴 프로필 테스트"/>
@@ -422,10 +422,9 @@ input:checked + label > .knob > i:before {
         </h1>
     <nav>
         <u1 class="main-nav">
-            <li> <a href="https://quizzment.com/test.html">성격</a></li>
-            <li> <a href="https://quizzment.com/face.html">얼굴</a></li>
-            <li> <a href="https://quizzment.com/etc.html">그외</a></li>
-            <li> <a href="https://quizzment.com/saju.html">사주</a></li>
+            <li> <a href="https://test-it.co.kr/test.html">Quiz</a></li>
+            <li> <a href="https://test-it.co.kr/face.html">Face</a></li>
+            <li> <a href="https://test-it.co.kr/etc.html">Etc</a></li>
         </u1>
     </nav>
         
@@ -450,9 +449,9 @@ input:checked + label > .knob > i:before {
 <img class="up mt-3 pb-5" src="face150.png" alt="up">
 </div>
 
-    <h3 class="sbtitle""d-flex justify-content-center">성별 선택</h3>
+    <h3 class="sbtitle""d-flex justify-content-center">Gender</h3>
     <section class="d-flex justify-content-center">
-        <p class="d-flex align-items-center pr-3">여</p>
+        <p class="d-flex align-items-center pr-3">Female</p>
         <div>
             <input type="checkbox" id="gender">
             <label for="gender">
@@ -461,7 +460,7 @@ input:checked + label > .knob > i:before {
                 </span>
             </label>
         </div>
-        <p class="d-flex align-items-center pl-3">남</p>
+        <p class="d-flex align-items-center pl-3">Male</p>
     </section>
    
    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -469,7 +468,7 @@ input:checked + label > .knob > i:before {
         <div class="image-upload-wrap">
             <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
             <div class="drag-text">
-                <h3 class="mb-5 pb-4 pt-5  upload-text">사진을 올려놓거나<br>눌러서 파일 업로드</h3>
+                <h3 class="mb-5 pb-4 pt-5  upload-text">Insert or<br>Drop Photo</h3>
             </div>
         </div>
         <div class="file-upload-content">
@@ -478,7 +477,7 @@ input:checked + label > .knob > i:before {
                 <div class="spinner-border" role="status">
                     <span class="sr-only">Loading</span>
                 </div>
-                <p class="text-center">프로필을 작성 중입니다..</p>
+                <p class="text-center">Profile Pending..</p>
             </div>
                 <p class="result-message"></p>
             <div id="label-container" class="d-flex flex-column justify-content-around"></div>
@@ -489,12 +488,12 @@ input:checked + label > .knob > i:before {
   <div class="pt-3 image-title-wrap">
     <div style="display: block; text-align: center;">
         <button type="button" class="try-again-btn mt-3" onclick="window.location.reload();" style="white-space: nowrap; width: 270px; font-size: 13px;">
-            <span class="try-again-text">다른 사진으로 해보기</span>
+            <span class="try-again-text">Try another photo</span>
         </button>
     </div>
     <div style="display: block; text-align: center;">
         <button type="button" class="try-again-btn mt-3" onclick="location.href='/';" style="white-space: nowrap; width: 270px; margin-top: 10px; font-size: 13px;">
-            <span class="try-again-text">다른 테스트 하러가기</span>
+            <span class="try-again-text">Try another quiz</span>
         </button>
     </div>
                         
@@ -506,9 +505,6 @@ input:checked + label > .knob > i:before {
                
 
 
-    <div class="ad-banner mt-1">
-<a href="https://link.coupang.com/a/P2s0V" target="_blank" referrerpolicy="unsafe-url"><img src="https://ads-partners.coupang.com/banners/471299?subId=&traceId=V0-301-bae0f72e5e59e45f-I471299&w=320&h=100" alt=""></a>
-  
 
 <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
 
@@ -933,23 +929,6 @@ input:checked + label > .knob > i:before {
             
                 labelContainer.childNodes[i].innerHTML = label + bar;
             }
-        }
-    </script>
-    <script>
-        function iosApp() {
-            document.getElementById("coupang").style.display="none";
-            $("#coupang ins").hide();
-            document.getElementById("addThis").style.display="none";
-            document.getElementById("disqus_thread").style.display="none";
-            var kakao = document.getElementsByClassName("kakao_ad_area");
-            for (var i = 0; i < kakao.length; i++) {
-              if(kakao[i]) {
-                  kakao[i].style.display="none";
-              }
-            }
-            document.getElementById("yotube-top-link").style.display="none";
-            document.getElementById("yotube-mid-link").style.display="none";
-            document.getElementById("yotube-bottom-link").style.display="none";
         }
     </script>
 </body>
