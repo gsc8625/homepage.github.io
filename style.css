@@ -221,4 +221,13 @@ footer p {
     footer p {
         font-size: 0.7rem;
     }
+	
+@media screen and (max-width: 400px) {
+  .site-title {
+    all: unset; /* Remove h1 styling */
+    display: contents; /* Makes the <a> behave like it's not wrapped */
+  }
+}
+
+
 }
