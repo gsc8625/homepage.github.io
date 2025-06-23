@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Quizzment - MBTI Test</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3187370930413699"
+        crossorigin="anonymous"></script>
+    <meta name="description" content="Discover your MBTI personality type with Quizzment!">
+    <meta name="keywords" content="Quizzment, MBTI, Personality, Test, Quiz">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Quizzment - MBTI Test">
+    <meta property="og:description" content="Discover your MBTI personality type with Quizzment!">
+    <meta property="og:image" content="https://quizzment.com/featuredimage.png">
+    <meta property="og:url" content="https://quizzment.com/mbti/">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/favicon.png">
+</head>
+
+<body>
+    <header class="page-header wrapper">
+        <h1 class="site-title">
+            <a href="/index.html"><img class="logo" src="/img_logo.png" alt="Quizzment"></a>
+        </h1>
+        <nav>
+            <ul class="main-nav">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/tarot/index.html">Tarot</a></li>
+                <li><a href="/fortune/index.html">Fortune</a></li>
+                <li><a href="/etc.html">Etc</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="section">
+        <div class="container"
+            style="max-width: 700px; margin: auto; background: linear-gradient(to right, #e0f7fa, #fce4ec); padding: 2rem; border-radius: 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
+
+            <!-- Progress Bar -->
+            <div id="progress-bar"
+                style="display:none; height: 10px; background: #ddd; border-radius: 8px; overflow: hidden; margin-bottom: 1rem;">
+                <div id="progress-fill" style="height: 100%; width: 0%; background: #4CAF50;"></div>
+            </div>
+
+            <!-- Beginning Screen -->
+            <div id="start-screen" style="text-align: center;">
+                <h2 style="font-size: 2rem; margin-bottom: 1rem; color: #333;">🧬 MBTI Personality Type Test</h2>
+                <p style="margin-bottom: 2rem; color: #555;">Find out your personality type through 70 carefully crafted
+                    questions!</p>
+                <div><img src="/mbtistart.jpg" alt="MBTI Start Image"
+                        style="max-width: 100%; border-radius: 16px; margin-bottom: 1.5rem;"></div>
+                <button onclick="startTest()"
+                    style="padding: 12px 24px; font-size: 1rem; background-color: #4CAF50; color: white; border: none; border-radius: 8px; cursor: pointer;">Start
+                    Test</button>
+            </div>
+
+            <!-- Testing Screen -->
+            <div id="test-screen" style="display: none;">
+                <div id="question-card" class="flip-card" style="perspective: 1000px;">
+                    <div class="flip-card-inner" style="transition: transform 0.6s; transform-style: preserve-3d;">
+                        <div class="flip-card-front"
+                            style="backface-visibility: hidden; background: #ffffff; padding: 2rem; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                            <p id="question-text" style="font-weight: bold; font-size: 1.2rem; color: #333;"></p>
+                            <div id="options" style="margin-top: 1.5rem;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Result Screen -->
+            <div id="result-screen" style="display: none; text-align: center;">
+                <h3>Your MBTI type is <span id="result-type"></span></h3>
+                <img id="result-image" src="" alt="MBTI Result Image"
+                    style="margin-top: 1rem; max-width: 100%; border-radius: 12px;">
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        const questions = shuffleArray([
+            { q: "At a party do you:", a: "Interact with many, including strangers", b: "Interact with a few, known to you", type: "E" },
+            { q: "Are you more:", a: "Realistic than speculative", b: "Speculative than realistic", type: "S" },
+            { q: "Is it worse to:", a: "Have your 'head in the clouds'", b: "Be 'in a rut'", type: "N" },
+            { q: "Are you more impressed by:", a: "Principles", b: "Emotions", type: "T" },
+            { q: "Are more drawn toward the:", a: "Convincing", b: "Touching", type: "F" },
+            { q: "Do you prefer to work:", a: "To deadlines", b: "Just 'whenever'", type: "J" },
+            { q: "Do you tend to choose:", a: "Rather carefully", b: "Somewhat impulsively", type: "P" },
+            { q: "At parties do you:", a: "Stay late, with increasing energy", b: "Leave early with decreased energy", type: "E" },
+            { q: "Do you find it easier to remember:", a: "Names", b: "Faces", type: "S" },
+            { q: "Is it more important to be:", a: "Fair-minded", b: "Compassionate", type: "F" },
+            { q: "Do you more often trust:", a: "Facts", b: "Feelings", type: "T" },
+            { q: "Which appeals more:", a: "Predictability", b: "Spontaneity", type: "J" },
+            { q: "Do you prefer:", a: "Structured environments", b: "Flexible environments", type: "P" },
+            { q: "Are you more interested in:", a: "What is actual", b: "What is possible", type: "N" },
+            { q: "Do you value yourself more for being:", a: "Objective", b: "Empathetic", type: "T" },
+            { q: "Are you more comfortable:", a: "After making a decision", b: "Keeping options open", type: "J" },
+        ]).slice(0, 8);
+
+        let currentQuestion = 0;
+        const responses = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+
+        function startTest() {
+            document.getElementById('start-screen').style.display = 'none';
+            document.getElementById('test-screen').style.display = 'block';
+            document.getElementById('progress-bar').style.display = 'block';
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const question = questions[currentQuestion];
+            document.getElementById('question-text').innerText = `${currentQuestion + 1}. ${question.q}`;
+            document.getElementById('options').innerHTML = `
+    <button onclick="answer('a')" style="margin: 0.5rem; padding: 12px 16px; width: 100%; background: #e3f2fd; border: none; border-radius: 8px; font-size: 1rem;">${question.a}</button>
+    <button onclick="answer('b')" style="margin: 0.5rem; padding: 12px 16px; width: 100%; background: #fce4ec; border: none; border-radius: 8px; font-size: 1rem;">${question.b}</button>
+  `;
+            updateProgressBar();
+        }
+
+        function updateProgressBar() {
+            const percentage = ((currentQuestion) / questions.length) * 100;
+            document.getElementById('progress-fill').style.width = `${percentage}%`;
+        }
+
+        function answer(choice) {
+            const question = questions[currentQuestion];
+            const primary = question.type;
+            const opposite = { E: 'I', I: 'E', S: 'N', N: 'S', T: 'F', F: 'T', J: 'P', P: 'J' }[primary];
+
+            if (choice === 'a') responses[primary]++;
+            else responses[opposite]++;
+
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                showQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById('test-screen').style.display = 'none';
+            document.getElementById('progress-bar').style.display = 'none';
+            const resultType = `${responses.E >= responses.I ? 'E' : 'I'}${responses.S >= responses.N ? 'S' : 'N'}${responses.T >= responses.F ? 'T' : 'F'}${responses.J >= responses.P ? 'J' : 'P'}`;
+            document.getElementById('result-type').innerText = resultType;
+            document.getElementById('result-image').src = `/mbti_images/${resultType.toLowerCase()}.jpg`;
+            document.getElementById('result-screen').style.display = 'block';
+        }
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+    </script>
+
+
+
+
+
+    <!-- Floating Icon Button -->
+    <button id="kakao-channel-icon" onclick="navigateToKakaoChannel()">
+        <img src="/discord-icon.png" alt="Kakao Channel Icon">
+    </button>
+    <script>
+        function navigateToKakaoChannel() {
+            var kakaoChannelUrl = "http://discord.com";
+            window.open(kakaoChannelUrl, "_blank");
+        }
+    </script>
+
+    <footer
+        style="width: 100vw; background-color: #ffffff; padding: 10px 10px; text-align: center; font-size: 13px; color: #333; box-sizing: border-box;">
+        <p style="margin: 4px 0;">Advertisement Request - sc62070@gmail.com</p>
+        <p style="margin: 4px 0;">&copy; Quizzment 2025. All Rights Reserved.</p>
+        <button onclick="toggleBusinessInfo()"
+            style="background: none; border: none; color: #808080; font-size: 13px; cursor: pointer; margin: 10px 0; text-decoration: none;">
+            Company Information
+        </button>
+        <div id="businessInfo" style="display: none; color: #666; font-size: 12px; line-height: 1.6; margin-top: 10px;">
+            <p style="margin: 4px 0;">Company Name : Quizzment | CEO : Steve Choi</p>
+        </div>
+    </footer>
+    <script>
+        function toggleBusinessInfo() {
+            const info = document.getElementById('businessInfo');
+            info.style.display = (info.style.display === 'none' || info.style.display === '') ? 'block' : 'none';
+        }
+    </script>
+</body>
+
+</html>
