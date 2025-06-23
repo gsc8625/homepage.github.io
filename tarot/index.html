@@ -20,14 +20,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" type="image/png" href="/favicon.png">
 </head>
 
 <body>
   <header class="page-header wrapper">
     <h1 class="site-title">
-      <a href="index.html"><img class="logo" src="/img_logo.png" alt="Quizzment"></a>
+      <a href="/index.html"><img class="logo" src="/img_logo.png" alt="Quizzment"></a>
     </h1>
+
     <nav>
       <ul class="main-nav">
         <li> <a href="https://quizzment.com/index.html">Home</a></li>
@@ -37,39 +38,69 @@
     </nav>
   </header>
 
-  <section class="section">
-    <div class="container" style="max-width: 700px; margin: auto; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-      <h2 style="text-align:center;">🔮 Tarot Card Reading</h2>
+<section class="section">
+  <!-- Tarot Card Reading Starts Here -->
+  <div class="container" style="max-width: 700px; margin: auto; background: white; padding: 2rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+    <h2 style="text-align:center; font-size: 2rem; margin-bottom: 1.5rem; color: #333;">🔮 Tarot Card Reading</h2>
 
-      <!-- User Input -->
-      <input type="text" id="userName" placeholder="Enter your name">
-      <input type="number" id="userAge" placeholder="Enter your age">
-      <select id="userGender">
+    <!-- User Input -->
+    <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;">
+      <input type="text" id="userName" placeholder="Enter your name" style="padding: 0.75rem; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem;">
+      <input type="number" id="userAge" placeholder="Enter your age" style="padding: 0.75rem; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem;">
+      <select id="userGender" style="padding: 0.75rem; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; color: #555;">
         <option value="" disabled selected>Select gender</option>
         <option value="Male">Male</option>
         <option value="Female">Female</option>
       </select>
-      <button onclick="generateTarotReading()">Get Your Tarot Reading</button>
-
-      <!-- Loading Spinner -->
-      <div id="loading" class="spinner" style="display:none; border: 6px solid #f3f3f3; border-top: 6px solid #007bff; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 2rem auto;"></div>
-
-      <!-- Result Section -->
-      <div id="result" class="result" style="margin-top: 2rem; padding: 1rem; background: #fafafa; border-radius: 8px; display: none;">
-        <h3>Your Tarot Card:</h3>
-        <div id="tarotImage"></div> <!-- Image comes first -->
-        <h3>Reading Explanation:</h3>
-        <div id="readingText"></div>
-      </div>
+      <button onclick="generateTarotReading()" style="padding: 0.75rem; background-color: #007bff; color: white; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; transition: background-color 0.3s;">
+        Get Your Tarot Reading
+      </button>
     </div>
-  </section>
 
-  <!-- Kakao (Discord) Icon -->
-  <button id="kakao-channel-icon" onclick="navigateToKakaoChannel()" style="position: fixed; bottom: 80px; right: 20px; background: none; border: none; cursor: pointer;">
-    <img src="/discord-icon.png" alt="Kakao Channel Icon"">
+    <!-- Loading Spinner -->
+    <div id="loading" class="spinner" style="display:none; border: 6px solid #f3f3f3; border-top: 6px solid #007bff; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 2rem auto;"></div>
+
+    <!-- Result Section -->
+    <div id="result" class="result" style="margin-top: 2rem; padding: 1.5rem; background: #f9f9f9; border-radius: 12px; display: none;">
+      <h3 style="text-align:center; margin-bottom: 1rem; color: #333;">Your Tarot Card:</h3>
+      <div id="tarotImage" style="text-align:center; margin-bottom: 1rem;"></div>
+      <h3 style="text-align:center; margin-bottom: 1rem; color: #333;">Reading Explanation:</h3>
+      <div id="readingText" style="font-size: 1rem; color: #555; line-height: 1.6;"></div>
+    </div>
+  </div>
+  <!-- Tarot Card Reading Ends Here -->
+</section>
+
+<style>
+  button:hover {
+    background-color: #0056b3 !important;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
+
+
+  <!-- 아이콘 요소 -->
+  <button id="kakao-channel-icon" onclick="navigateToKakaoChannel()">
+    <img src="/discord-icon.png" alt="Kakao Channel Icon">
   </button>
 
-  <!-- Footer -->
+  <script>
+    // 아이콘 클릭 시 채널로 이동하는 함수
+    function navigateToKakaoChannel() {
+      // 카카오톡 채널 URL  
+      var kakaoChannelUrl = "http://discord.com";
+      // 현재 창에서 카카오톡 채널로 이동
+      window.open(kakaoChannelUrl, "_blank");
+    }
+  </script>
+
+  <!-- 사이트 전체 끝나는 곳 (</div> 바깥)에 이렇게 footer 삽입) -->
+  </div> <!-- 메인 콘텐츠 끝나는 div 닫기 -->
+
   <footer style="width: 100vw; background-color: #ffffff; padding: 10px 10px; text-align: center; font-size: 13px; color: #333; box-sizing: border-box;">
     <p style="margin: 4px 0;">Advertisement Request - sc62070@gmail.com</p>
     <p style="margin: 4px 0;">&copy; Quizzment 2025. All Rights Reserved.</p>
@@ -83,15 +114,9 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
   <script>
-    function navigateToKakaoChannel() {
-      var kakaoChannelUrl = "http://discord.com";
-      window.open(kakaoChannelUrl, "_blank");
-    }
-
     function toggleBusinessInfo() {
       const info = document.getElementById('businessInfo');
       info.style.display = (info.style.display === 'none' || info.style.display === '') ? 'block' : 'none';
