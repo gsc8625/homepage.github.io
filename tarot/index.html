@@ -1,119 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
+
 <head>
   <meta charset="UTF-8">
-  <title>Tarot Card Reading</title>
-  <style>
-    body { font-family: sans-serif; background: #f2f2f2; padding: 2rem; }
-    .container { max-width: 700px; margin: auto; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-    input, select, button { width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 8px; }
-    button { background: #007bff; color: white; cursor: pointer; }
-    .result { margin-top: 2rem; padding: 1rem; background: #fafafa; border-radius: 8px; display: none; }
-    .result img { max-width: 100%; border-radius: 12px; margin-bottom: 1rem; }
-    .spinner { border: 6px solid #f3f3f3; border-top: 6px solid #007bff; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 2rem auto; }
-    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-  </style>
+  <title>Quizzment</title>
+  <meta name="description"
+    content="This is a website full of fun tests such as the MBTI test, personality test, love test, and facial recognition test.">
+  <meta name="keywords"
+    content="Tests, psychological tests, profile tests, personality tests, MBTI, various tests, boredom-killing tests, love tests, romance tests, radio love test, The Glory quiz, The Glory Season 2 test, old-school person test, newspaper personality test, weakness test, strength test, fortune test, Quizzment, test it, Christmas test, MBTI test, MBTI, MBTI test, color MBTI, radio love test, radio test, rolling paper test, rolling paper MBTI.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Quizzment">
+  <meta property="og:description"
+    content="This is a website full of fun tests such as the MBTI test, personality test, and facial recognition test.">
+  <meta property="og:image" content="https://quizzment.com/featuredimage.png">
+  <meta property="og:url" content="https://quizzment.com/">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="google-site-verification" content="DMg8QOrWVNM-tnh8rDjHIwFj0Ie_BsIiJkNmT_iHJrk" />
+  <link rel="stylesheet" href="/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png">
 </head>
+
 <body>
+  <header class="page-header wrapper">
+    <h1 class="site-title">
+      <a href="index.html"><img class="logo" src="/img_logo.png" alt="Quizzment"></a>
+    </h1>
+    <nav>
+      <ul class="main-nav">
+        <li> <a href="https://quizzment.com/index.html">Home</a></li>
+        <li> <a href="https://quizzment.com/tarot/index.html">Tarot</a></li>
+        <li> <a href="https://quizzment.com/etc.html">Etc</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <div class="container">
-    <h2 style="text-align:center;">🔮 Tarot Card Reading</h2>
+  <section class="section">
+    <div class="container" style="max-width: 700px; margin: auto; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+      <h2 style="text-align:center;">🔮 Tarot Card Reading</h2>
 
-    <!-- User Input -->
-    <input type="text" id="userName" placeholder="Enter your name">
-    <input type="number" id="userAge" placeholder="Enter your age">
-    <select id="userGender">
-      <option value="" disabled selected>Select gender</option>
-      <option value="Male">Male</option>
-      <option value="Female">Female</option>
-    </select>
-    <button onclick="generateTarotReading()">Get Your Tarot Reading</button>
+      <!-- User Input -->
+      <input type="text" id="userName" placeholder="Enter your name">
+      <input type="number" id="userAge" placeholder="Enter your age">
+      <select id="userGender">
+        <option value="" disabled selected>Select gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+      <button onclick="generateTarotReading()">Get Your Tarot Reading</button>
 
-    <!-- Loading Spinner -->
-    <div id="loading" class="spinner" style="display:none;"></div>
+      <!-- Loading Spinner -->
+      <div id="loading" class="spinner" style="display:none; border: 6px solid #f3f3f3; border-top: 6px solid #007bff; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 2rem auto;"></div>
 
-    <!-- Result Section -->
-    <div id="result" class="result">
-      <h3>Your Tarot Card:</h3>
-      <div id="tarotImage"></div> <!-- Image comes first now -->
-      <h3>Reading Explanation:</h3>
-      <div id="readingText"></div>
+      <!-- Result Section -->
+      <div id="result" class="result" style="margin-top: 2rem; padding: 1rem; background: #fafafa; border-radius: 8px; display: none;">
+        <h3>Your Tarot Card:</h3>
+        <div id="tarotImage"></div> <!-- Image comes first -->
+        <h3>Reading Explanation:</h3>
+        <div id="readingText"></div>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Markdown Parser -->
+  <!-- Kakao (Discord) Icon -->
+  <button id="kakao-channel-icon" onclick="navigateToKakaoChannel()" style="position: fixed; bottom: 80px; right: 20px; background: none; border: none; cursor: pointer;">
+    <img src="/discord-icon.png" alt="Kakao Channel Icon"">
+  </button>
+
+  <!-- Footer -->
+  <footer style="width: 100vw; background-color: #ffffff; padding: 10px 10px; text-align: center; font-size: 13px; color: #333; box-sizing: border-box;">
+    <p style="margin: 4px 0;">Advertisement Request - sc62070@gmail.com</p>
+    <p style="margin: 4px 0;">&copy; Quizzment 2025. All Rights Reserved.</p>
+
+    <button onclick="toggleBusinessInfo()" style="background: none; border: none; color: #808080; font-size: 13px; cursor: pointer; margin: 10px 0; text-decoration: none;">
+      Company Information
+    </button>
+
+    <div id="businessInfo" style="display: none; color: #666; font-size: 12px; line-height: 1.6; margin-top: 10px;">
+      <p style="margin: 4px 0;">Company Name : Quizzment | CEO : Steve Choi</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
-<script>
-  const apiKey = "AIzaSyAIpKmwl5q3wXHLnrFMKfhh0t8eOr7ehds";
-
-  async function generateTarotReading() {
-    const name = document.getElementById('userName').value.trim();
-    const age = document.getElementById('userAge').value.trim();
-    const gender = document.getElementById('userGender').value;
-
-    if (!name || !age || !gender) {
-      alert('Please fill in all fields.');
-      return;
+  <script>
+    function navigateToKakaoChannel() {
+      var kakaoChannelUrl = "http://discord.com";
+      window.open(kakaoChannelUrl, "_blank");
     }
 
-    document.getElementById('result').style.display = 'none';
-    document.getElementById('loading').style.display = 'block';
+    function toggleBusinessInfo() {
+      const info = document.getElementById('businessInfo');
+      info.style.display = (info.style.display === 'none' || info.style.display === '') ? 'block' : 'none';
+    }
 
-    const prompt = `You are a tarot card expert. Give a unique tarot card reading for a ${age}-year-old ${gender} named ${name}. Mention which tarot card represents their situation and describe the card in detail. Please include the tarot card name clearly like this: Tarot card: [Card Name].`;
+    const apiKey = "AIzaSyAIpKmwl5q3wXHLnrFMKfhh0t8eOr7ehds";
 
-    const body = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
+    async function generateTarotReading() {
+      const name = document.getElementById('userName').value.trim();
+      const age = document.getElementById('userAge').value.trim();
+      const gender = document.getElementById('userGender').value;
 
-    try {
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
+      if (!name || !age || !gender) {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      document.getElementById('result').style.display = 'none';
+      document.getElementById('loading').style.display = 'block';
+
+      const prompt = `You are a tarot card expert. Give a unique tarot card reading for a ${age}-year-old ${gender} named ${name}. Mention which tarot card represents their situation and describe the card in detail. Please include the tarot card name clearly like this: Tarot card: [Card Name].`;
+
+      const body = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
+
+      try {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        });
+
+        const data = await response.json();
+        const reading = data?.candidates?.[0]?.content?.parts?.[0]?.text || "No reading available.";
+
+        const cardMatch = reading.match(/Tarot card:\s*([A-Za-z\s]+)/i);
+        const cardName = cardMatch ? cardMatch[1].trim() : "mystical tarot card";
+
+        const imageUrl = await generateTarotImage(cardName);
+
+        document.getElementById('tarotImage').innerHTML = `
+          <img src="${imageUrl}" alt="Tarot Card Image" style="max-width: 100%; border-radius: 12px; margin-bottom: 1rem;">
+          <p style="font-size:0.9rem; color:#555;">Card: ${cardName}</p>
+        `;
+
+        document.getElementById('readingText').innerHTML = marked.parse(reading);
+
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('result').style.display = 'block';
+
+      } catch (error) {
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('result').style.display = 'block';
+        document.getElementById('readingText').innerHTML = '<p style="color:red;">Error fetching tarot reading. Please try again.</p>';
+        console.error(error);
+      }
+    }
+
+    function generateTarotImage(cardName) {
+      return new Promise((resolve, reject) => {
+        const seed = Date.now();
+        const model = 'glid-3-xl';
+        const prompt = `${cardName} tarot card, detailed mystical illustration`;
+        const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?nologo=true&model=${model}&seed=${seed}`;
+
+        const img = new Image();
+        img.onload = () => resolve(imageUrl);
+        img.onerror = () => resolve('https://via.placeholder.com/600x800?text=Image+Unavailable');
+        img.src = imageUrl;
       });
-
-      const data = await response.json();
-      const reading = data?.candidates?.[0]?.content?.parts?.[0]?.text || "No reading available.";
-
-      // Extract tarot card name
-      const cardMatch = reading.match(/Tarot card:\s*([A-Za-z\s]+)/i);
-      const cardName = cardMatch ? cardMatch[1].trim() : "mystical tarot card";
-
-      // Generate the image and wait for it to load
-      const imageUrl = await generateTarotImage(cardName);
-
-      // Display image first, then explanation
-      document.getElementById('tarotImage').innerHTML = `
-        <img src="${imageUrl}" alt="Tarot Card Image">
-        <p style="font-size:0.9rem; color:#555;">Card: ${cardName}</p>
-      `;
-
-      document.getElementById('readingText').innerHTML = marked.parse(reading);
-
-      document.getElementById('loading').style.display = 'none';
-      document.getElementById('result').style.display = 'block';
-
-    } catch (error) {
-      document.getElementById('loading').style.display = 'none';
-      document.getElementById('result').style.display = 'block';
-      document.getElementById('readingText').innerHTML = '<p style="color:red;">Error fetching tarot reading. Please try again.</p>';
-      console.error(error);
     }
-  }
-
-  function generateTarotImage(cardName) {
-    return new Promise((resolve, reject) => {
-      const seed = Date.now();
-      const model = 'glid-3-xl'; // You can update this model name if needed
-      const prompt = `${cardName} tarot card, detailed mystical illustration`;
-      const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?nologo=true&model=${model}&seed=${seed}`;
-
-      const img = new Image();
-      img.onload = () => resolve(imageUrl);
-      img.onerror = () => resolve('https://via.placeholder.com/600x800?text=Image+Unavailable');
-      img.src = imageUrl;
-    });
-  }
-</script>
+  </script>
 
 </body>
+
 </html>
