@@ -6,11 +6,12 @@
     <title>Quizzment - Princess MBTI Test</title>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3187370930413699"
         crossorigin="anonymous"></script>
-    <meta name="description" content="Discover your MBTI personality type with Quizzment!">
-    <meta name="keywords" content="Quizzment, MBTI, Personality, Test, Quiz">
+    <meta name="description" content="Discover your MBTI princess personality type with Quizzment!">
+    <meta name="keywords" content="Quizzment, MBTI, Personality, Test, Quiz, princess, Princess MBTI, Princess Personality Test">
+    <meta name="author" content="Quizzment">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Quizzment - MBTI Test">
-    <meta property="og:description" content="Discover your MBTI personality type with Quizzment!">
+    <meta property="og:title" content="Quizzment - Princess MBTI Test">
+    <meta property="og:description" content="Discover your MBTI princess personality type with Quizzment!">
     <meta property="og:image" content="https://quizzment.com/featuredimage.png">
     <meta property="og:url" content="https://quizzment.com/mbti/">
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -51,10 +52,10 @@
                 <h2 style="font-size: 2rem; margin-bottom: 1rem; color: #333;">MBTI Princess Test</h2>
                 <p style="margin-bottom: 2rem; color: #555;">Find out your personality type through 16 carefully crafted
                     questions!</p>
-                <div><img src="/mbtistart.jpg" alt="MBTI Start Image"
+                <div><img src="/mbti/mbti.png" alt="MBTI Start Image"
                         style="max-width: 100%; border-radius: 16px; margin-bottom: 1.5rem;"></div>
                 <button onclick="startTest()"
-                    style="padding: 12px 24px; font-size: 1rem; background-color: #4CAF50; color: white; border: none; border-radius: 8px; cursor: pointer;">Start
+                    style="padding: 12px 24px; font-size: 1rem; background-color: #da89e6; color: white; border: none; border-radius: 8px; cursor: pointer;">Start
                     Test</button>
             </div>
 
@@ -147,7 +148,7 @@
             document.getElementById('progress-bar').style.display = 'none';
             const resultType = `${responses.E >= responses.I ? 'E' : 'I'}${responses.S >= responses.N ? 'S' : 'N'}${responses.T >= responses.F ? 'T' : 'F'}${responses.J >= responses.P ? 'J' : 'P'}`;
             document.getElementById('result-type').innerText = resultType;
-            document.getElementById('result-image').src = `/mbti_images/${resultType.toLowerCase()}.jpg`;
+            document.getElementById('result-image').src = `/mbti/${resultType.toLowerCase()}.jpg`;
             document.getElementById('result-screen').style.display = 'block';
         }
         function shuffleArray(array) {
