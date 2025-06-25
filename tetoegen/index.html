@@ -1,170 +1,531 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>What Kind of Person Are You?</title>
+  <title>Teto-Egen Personality Test</title>
+  <meta charset="UTF-8">
+  <title>Quizzment</title>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3187370930413699"
+     crossorigin="anonymous"></script>
+  <meta name="description"
+    content="Website full of fun tests such as the MBTI test, personality test, love test, and facial recognition test.">
+  <meta name="keywords"
+    content="Tests, psychological tests, profile tests, personality tests, MBTI, various tests, boredom-killing tests, love tests, romance tests, radio love test, The Glory quiz, The Glory Season 2 test, old-school person test, newspaper personality test, weakness test, strength test, fortune test, Quizzment, test it, Christmas test, MBTI test, MBTI, MBTI test, color MBTI, radio love test, radio test, rolling paper test, rolling paper MBTI.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Quizzment">
+  <meta property="og:description"
+    content="This is a website full of fun tests such as the MBTI test, personality test, and facial recognition test.">
+  <meta property="og:image" content="https://quizzment.com/featuredimage.png">
+  <meta property="og:url" content="https://quizzment.com/">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="google-site-verification" content="DMg8QOrWVNM-tnh8rDjHIwFj0Ie_BsIiJkNmT_iHJrk" />
+  <link rel="stylesheet" href="https://quizzment.com/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="https://quizzment.com/favicon.png">
   <style>
-    body {
+    /* Scoped styles under #teto-egen-app */
+    #teto-egen-app * {
+      box-sizing: border-box;
       font-family: 'Arial', sans-serif;
+    }
+
+    #teto-egen-app {
       background: #f5f7fa;
       color: #333;
-      margin: 0;
-      padding: 0;
-    }
-
-    .container {
-      max-width: 500px;
-      margin: 5vh auto;
       padding: 20px;
-      background: white;
+      max-width: 600px;
+      margin: 20px auto;
       border-radius: 12px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      user-select: none;
+    }
+
+    #teto-egen-app h1,
+    #teto-egen-app h2 {
       text-align: center;
+      margin-bottom: 20px;
     }
 
-    button {
-      padding: 12px 20px;
-      margin: 10px 0;
-      border: none;
-      background: #4caf50;
+    #teto-egen-app button {
+      padding: 12px 24px;
+      background-color: #4caf50;
       color: white;
+      border: none;
       border-radius: 8px;
-      font-size: 16px;
       cursor: pointer;
-    }
-
-    button:hover {
-      background: #45a049;
-    }
-
-    .option {
+      font-size: 16px;
+      margin: 10px auto;
       display: block;
-      margin: 10px 0;
-      padding: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    #teto-egen-app button:hover {
+      background-color: #45a049;
+    }
+
+    #teto-egen-app .option {
+      padding: 12px;
+      margin: 8px 0;
       background: #eee;
       border-radius: 8px;
       cursor: pointer;
+      transition: background-color 0.2s ease;
     }
 
-    .option:hover {
-      background: #ddd;
+    #teto-egen-app .option:hover {
+      background-color: #ddd;
+    }
+
+    #teto-egen-app .gender-select {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    #teto-egen-app .gender-select button {
+      background-color: #2196f3;
+      width: 120px;
+    }
+
+    #teto-egen-app .gender-select button.selected {
+      background-color: #0b78e3;
+    }
+
+    #teto-egen-app .result-type {
+      color: #4caf50;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
+    #teto-egen-app .description {
+      margin-top: 15px;
+      line-height: 1.4;
+      font-size: 1em;
+      white-space: pre-line;
+    }
+
+    #teto-egen-app #start-screen img {
+      display: block;
+      max-width: 300px;
+      margin: 0 auto 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Progress bar container */
+    #teto-egen-app #progress-container {
+      width: 100%;
+      background-color: #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 16px;
+      margin-bottom: 20px;
+    }
+
+    /* Progress bar filler */
+    #teto-egen-app #progress-bar {
+      height: 100%;
+      width: 0%;
+      background-color: #4caf50;
+      transition: width 0.3s ease;
+    }
+
+    /* Result image styling */
+    #teto-egen-app #result-image {
+      max-width: 100%;
+      max-height: 300px;
+      display: block;
+      margin: 20px auto 0 auto;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
   </style>
 </head>
-  <header class="page-header wrapper">
+
+<body>
+<header class="page-header wrapper">
     <h1 class="site-title">
-      <a href="index.html"><img class="logo" src="img_logo.png" alt="Quizzment"></a>
+      <a href="https://quizzment.com/"><img class="logo" src="https://quizzment.com/img_logo.png" alt="Quizzment"></a>
     </h1>
 
     <nav>
       <u1 class="main-nav">
         <li> <a href="https://quizzment.com/index.html">Tests</a></li>
-        <li> <a href="https://quizzment.com/fortune/index.html">Fortune</a></li>
         <li> <a href="https://quizzment.com/etc.html">Etc</a></li>
       </u1>
     </nav>
   </header>
-<body>
-  <div class="container">
-    <div id="quiz-box">
-      <h1>💭 What Kind of Person Are You?</h1>
-      <button id="start-btn">Start the Quiz</button>
+
+
+
+
+  <div id="teto-egen-app">
+    <h1>Teto-Egen Personality Test</h1>
+
+    <div id="start-screen">
+      <img src="teto-egen.jpg" alt="Teto Egen" />
+      <p style="text-align:center; margin-bottom: 20px;">Select your gender to begin the test.</p>
+      <div class="gender-select">
+        <button id="btn-male">Male</button>
+        <button id="btn-female">Female</button>
+      </div>
+    </div>
+
+    <div id="quiz-screen" style="display:none;">
+      <div id="progress-container" aria-label="Question progress">
+        <div id="progress-bar"></div>
+      </div>
+      <div id="quiz-box"></div>
+    </div>
+
+    <div id="result-screen" style="display:none;">
+      <h2 id="result-title"></h2>
+      <p class="description" id="result-description"></p>
+      <img id="result-image" src="" alt="Result Image" />
+      <button id="restart-btn">Try Again</button>
     </div>
   </div>
 
   <script>
-    const quizData = [
-      {
-        question: "Your friend suddenly cancels your weekend plans. How do you respond?",
-        options: [
-          { text: "Cool, I wanted to stay in anyway.", type: "Teto Girl" },
-          { text: "Could’ve told me earlier...", type: "Egen Girl" },
-          { text: "Guess I’ll have fun solo!", type: "Egen Guy" },
-          { text: "Everything okay? What happened?", type: "Teto Guy" }
-        ]
-      },
-      {
-        question: "The day before a big exam, you are...",
-        options: [
-          { text: "Studying by schedule, as planned.", type: "Teto Guy" },
-          { text: "Cramming everything at once.", type: "Egen Guy" },
-          { text: "Binge-watching shows instead.", type: "Egen Girl" },
-          { text: "Memorizing everything like your life depends on it.", type: "Teto Girl" }
-        ]
-      },
-      {
-        question: "You’re in a group chat and no one replies to your message.",
-        options: [
-          { text: "Ignore it, whatever.", type: "Egen Guy" },
-          { text: "Maybe they’re busy...", type: "Teto Guy" },
-          { text: "Send a meme to lighten the mood.", type: "Egen Girl" },
-          { text: "Delete the message and overthink it for an hour.", type: "Teto Girl" }
-        ]
+    (() => {
+      const maleQuestions = [
+        "✨ Do you try to implement various styles when dressing?",
+        "🔧 In stressful situations, do you focus more on finding concrete solutions than being overwhelmed by emotions?",
+        "🗣️ At gatherings, do you take initiative in suggesting topics or leading the conversation if none are set?",
+        "🏆 Do you consider social recognition or economic achievement as the most important success in life?",
+        "⚙️ Do you often shop for clothes from standard brands like Mu*sa or Top*?",
+        "💖 When a friend shares their worries, do you empathize deeply rather than just offer solutions?",
+        "💬 When having a hard time, do you prefer sharing feelings with close friends rather than solving alone?",
+        "🚧 When facing new challenges, do you feel more anxiety about failure than hope for success?",
+        "🔥 When setting goals, do you persist through hardships with strong determination?",
+        "❤️ Do compliments on your appearance or style boost your confidence for the entire day?",
+        "🧠 When criticized for mistakes or weaknesses, do you analyze and learn rather than get emotionally hurt?",
+        "📊 Do you think understanding logical facts is more important than emotional issues in relationships?",
+        "💼 Do you often feel pressure to achieve success such as a good job, high salary, or honor?",
+        "👀 At social events with new people, do you try to gauge the atmosphere first and approach comfortably?",
+        "📈 Do you prefer basic and neat outfits over hip or trendy styles?",
+        "💬 If you feel hurt by close friends, do you explain your feelings with reasons rather than express emotions impulsively?",
+        "😢 Do sad movies or touching music easily move you emotionally?",
+        "⏩ Do you quickly let go of regrets or disappointments and focus on reality?",
+        "🤗 Do you like exploring unknown brands or unique styles?",
+        "🙏 Do you feel genuine sadness and compassion when seeing others in hardship?",
+        "🏅 Do you get a strong competitive spirit and need to win in contests?",
+        "🙏 When facing difficulties, do you prefer asking for help or solving together than solving alone?",
+        "✅ Do you find shopping for clothes bothersome and wish someone else would pick for you?",
+        "🤝 In group activities, do you care a lot about creating a harmonious and comfortable atmosphere?"
+      ];
+
+      const femaleQuestions = [
+        "🌸 Do you often feel like trying new styles after seeing friends or others change theirs?",
+        "🙈 When feeling hurt by someone, do you prefer to quietly keep your distance rather than talk directly?",
+        "⏰ When making plans with friends, do you usually take charge of proposing efficient time and place?",
+        "🌟 When setting life goals, do you value personal achievements like career or social status improvement?",
+        "📝 Do you prefer hip outfits rather than girly or feminine clothes?",
+        "😥 When in conflict, do you find it difficult or hesitate to express your opinions to avoid hurting others?",
+        "🤗 When feeling bad, do you prefer to spend time with someone or share feelings for comfort rather than being alone?",
+        "🛋️ When starting new things, do you prioritize stability and hesitate to take uncertain or risky challenges?",
+        "🤖 Can you temporarily set aside emotional parts in relationships if necessary for your work or goals?",
+        "💅 Do you enjoy visiting beauty salons, nail art, massage shops, or luxury boutiques?",
+        "🗣️ When upset or angry, do you sometimes vent through gossip rather than quietly confide in someone?",
+        "⚖️ In relationships, do you consider trust and promises more important than emotional problems?",
+        "🕊️ When thinking about the future, do you picture a happy and comfortable life with loved ones more than specific success plans?",
+        "👂 Are you good at sensing others' moods and adjusting your attitude accordingly?",
+        "🎯 Do you have a firm personal style and stick to it without being swayed by trends?",
+        "🔍 Do you enjoy talking about info or analysis rather than personal feelings or relationships with friends?",
+        "🤗 Do small words or actions from others easily affect your emotions?",
+        "🤗 Do you have a warm side that approaches and comforts people who are struggling?",
+        "😊 Do you like feminine dresses like one-piece dresses?",
+        "😔 Do emotional problems in relationships often cause you stress or hardship?",
+        "🧐 Are you relatively objective and sometimes strict in evaluating your abilities and potentials?",
+        "🤝 When pursuing goals, do you value relationships and emotional exchanges more than the results?",
+        "👍 When receiving compliments about your looks, do you respond calmly with 'thank you' rather than shy or overly happy?",
+        "🕊️ Are you willing to sacrifice or compromise part of yourself easily to maintain relationships with loved ones?"
+      ];
+
+      const tiersFemale = [
+        {
+          range: [94, 100],
+          title: "General of the Nation Teto Girl",
+          description: `"Were you a general who saved the country in your past life?" A general trapped in a female body, destined for great things in society. (Top 6% Teto score)`
+        },
+        {
+          range: [72, 93],
+          title: "Lady Commander Teto Girl",
+          description: `"Suppressing the general inside while living in society. But be careful if provoked." A socialized Teto girl on the edge of unleashing a black dragon. (Teto score top 6%-28%)`
+        },
+        {
+          range: [50, 71],
+          title: "Lovely Teto Girl",
+          description: "Balanced Teto girl who is Teto-like but still retains loveliness. (Teto score top 28%-50%)"
+        },
+        {
+          range: [50, 72],
+          title: "Half and Half Mix Egen Girl",
+          description: "Socialized, well-rounded, and brave Mix Egen girl. (Egen score top 28%-50%)"
+        },
+        {
+          range: [28, 49],
+          title: "Princess-level Egen Girl",
+          description: `"Suppressing the princess inside while living in society." Fully socialized with maximum princess power. (Egen score top 6%-28%)`
+        },
+        {
+          range: [0, 27],
+          title: "Noble Blood Egen Girl",
+          description: `"Were you a princess in your past life?" A princess who commands palace servants with a wave and enjoys brunch. (Top 6% Egen score)`
+        }
+      ];
+
+      const tiersMale = [
+        {
+          range: [94, 100],
+          title: "Alpha Male",
+          description: `"If you succeed, you're an Alpha Male; if you fail, you're not!" (Top 6% Teto score)`
+        },
+        {
+          range: [72, 93],
+          title: "Lilla Lilla Teto Man",
+          description: "Testosterone-overloaded gorilla-like man who works hard and has great stamina. (Top 6%-28% Teto score)"
+        },
+        {
+          range: [50, 71],
+          title: "Servant Teto Man",
+          description: `"You're the perfect servant of the lady!" Proper Egen power with a light butt. (Top 28%-50% Teto score)`
+        },
+        {
+          range: [50, 72],
+          title: "Half and Half Mix Egen Man",
+          description: "Balanced and empathetic Mix Egen man. (Top 28%-50% Egen score)"
+        },
+        {
+          range: [28, 49],
+          title: "Kind Egen Man",
+          description: "You have both carefulness and kindness, possibly a light of society. (Top 6%-28% Egen score)"
+        },
+        {
+          range: [0, 27],
+          title: "Unicorn Male Friend Women Want",
+          description: `"Like a woman but not, you understand my heart better than female friends." (Top 6% Egen score)`
+        }
+      ];
+
+      const btnMale = document.getElementById("btn-male");
+      const btnFemale = document.getElementById("btn-female");
+      const startScreen = document.getElementById("start-screen");
+      const quizScreen = document.getElementById("quiz-screen");
+      const resultScreen = document.getElementById("result-screen");
+      const quizBox = document.getElementById("quiz-box");
+      const progressBar = document.getElementById("progress-bar");
+      const resultTitle = document.getElementById("result-title");
+      const resultDescription = document.getElementById("result-description");
+      const resultImage = document.getElementById("result-image");
+      const restartBtn = document.getElementById("restart-btn");
+
+      let selectedGender = null;
+      let currentQuestion = 0;
+      let scores = { teto: 0, egen: 0 };
+      let questions = [];
+      const answerWeights = [3, 2, 1, 0]; // Strongly Agree to Strongly Disagree
+
+      function resetGenderButtons() {
+        btnMale.classList.remove("selected");
+        btnFemale.classList.remove("selected");
       }
-    ];
 
-    let currentQuestion = 0;
-    let scores = {};
+      function selectGender(gender) {
+        selectedGender = gender;
+        resetGenderButtons();
+        if (gender === "male") btnMale.classList.add("selected");
+        else btnFemale.classList.add("selected");
+      }
 
-    const quizBox = document.getElementById("quiz-box");
+      btnMale.addEventListener("click", () => selectGender("male"));
+      btnFemale.addEventListener("click", () => selectGender("female"));
 
-    document.getElementById("start-btn").addEventListener("click", startQuiz);
+      // Start quiz when gender selected and start clicked
+      function startQuiz() {
+        if (!selectedGender) {
+          alert("Please select your gender to start the test.");
+          return;
+        }
+        // Prepare quiz
+        questions = selectedGender === "male" ? maleQuestions : femaleQuestions;
+        scores = { teto: 0, egen: 0 };
+        currentQuestion = 0;
 
-    function startQuiz() {
-      scores = {};
-      quizData.forEach(q => {
-        q.options.forEach(opt => {
-          scores[opt.type] = 0;
-        });
-      });
+        startScreen.style.display = "none";
+        resultScreen.style.display = "none";
+        quizScreen.style.display = "block";
 
-      showQuestion();
-    }
-
-    function showQuestion() {
-      const q = quizData[currentQuestion];
-      quizBox.innerHTML = `
-        <h2>${q.question}</h2>
-        ${q.options
-          .map(
-            (opt) => `
-            <div class="option" onclick="selectOption('${opt.type}')">${opt.text}</div>
-          `
-          )
-          .join("")}
-      `;
-    }
-
-    function selectOption(type) {
-      scores[type]++;
-      currentQuestion++;
-
-      if (currentQuestion < quizData.length) {
+        updateProgress();
         showQuestion();
-      } else {
-        showResult();
       }
-    }
 
-    function showResult() {
-      const resultType = Object.entries(scores).reduce((a, b) =>
-        a[1] > b[1] ? a : b
-      )[0];
+      // Show question & options
+      function showQuestion() {
+        if (currentQuestion >= questions.length) {
+          showResult();
+          return;
+        }
+        const qText = questions[currentQuestion];
+        const optionsHtml = ["Strongly Agree", "Agree", "Disagree", "Strongly Disagree"]
+          .map(
+            (text, i) =>
+              `<div class="option" data-score="${answerWeights[i]}" tabindex="0" role="button" aria-pressed="false" 
+                onclick="selectOption(${i})" onkeydown="if(event.key==='Enter'||event.key===' ') selectOption(${i})">${text}</div>`
+          )
+          .join("");
 
-      const descriptions = {
-        "Egen Guy": "A chill guy who plays it cool but sometimes leaves people guessing.",
-        "Egen Girl": "Cool on the outside, but secretly thoughtful and fun.",
-        "Teto Guy": "Super analytical and always thinking one step ahead.",
-        "Teto Girl": "Takes every quiz seriously and loves to share the result!"
+        quizBox.innerHTML = `<h2>Q${currentQuestion + 1}. ${qText}</h2>${optionsHtml}`;
+        updateProgress();
+      }
+
+      window.selectOption = function (optionIndex) {
+        const weight = answerWeights[optionIndex];
+        if (currentQuestion % 2 === 0) {
+          scores.teto += weight;
+        } else {
+          scores.egen += weight;
+        }
+        currentQuestion++;
+        showQuestion();
       };
 
-      quizBox.innerHTML = `
-        <h2>You are a <span style="color:#4caf50;">"${resultType}"</span> 🔍</h2>
-        <p>${descriptions[resultType]}</p>
-        <button onclick="location.reload()">Try Again</button>
-      `;
-    }
+      // Update progress bar width
+      function updateProgress() {
+        const percent = Math.round((currentQuestion / questions.length) * 100);
+        progressBar.style.width = percent + "%";
+      }
+
+      function getTier(percent, gender) {
+        const tiers = gender === "male" ? tiersMale : tiersFemale;
+        for (const tier of tiers) {
+          if (percent >= tier.range[0] && percent <= tier.range[1]) return tier;
+        }
+        return null;
+      }
+
+      // Show final result screen with image
+      function showResult() {
+        quizScreen.style.display = "none";
+        resultScreen.style.display = "block";
+
+        const maxScore = questions.length * 3;
+        const tetoPercent = Math.round((scores.teto / maxScore) * 100);
+        const egenPercent = Math.round((scores.egen / maxScore) * 100);
+        const dominantType = tetoPercent >= egenPercent ? "teto" : "egen";
+        const dominantPercent = dominantType === "teto" ? tetoPercent : egenPercent;
+        const tier = getTier(dominantPercent, selectedGender);
+
+        if (!tier) {
+          resultTitle.innerHTML = "Unable to determine result. Please try again.";
+          resultDescription.textContent = "";
+          resultImage.style.display = "none";
+          return;
+        }
+
+        resultTitle.innerHTML = `You are a <span class="result-type">${tier.title}</span> (${dominantType.toUpperCase()} - ${dominantPercent}%)`;
+        resultDescription.textContent = tier.description;
+
+        // Set image filename based on tier title, remove spaces and special chars for safety
+        const imgFileName = tier.title.replace(/[^a-zA-Z0-9]/g, "") + ".jpg";
+        resultImage.src = imgFileName;
+        resultImage.alt = tier.title;
+        resultImage.style.display = "block";
+      }
+
+      restartBtn.addEventListener("click", () => {
+        // Reset to start screen
+        resultScreen.style.display = "none";
+        quizScreen.style.display = "none";
+        startScreen.style.display = "block";
+        resetGenderButtons();
+        selectedGender = null;
+      });
+
+      // Add Start Quiz button below gender selection
+      const startBtn = document.createElement("button");
+      startBtn.textContent = "Start the Quiz";
+      startBtn.style.marginTop = "10px";
+      startBtn.disabled = true;
+      startBtn.addEventListener("click", startQuiz);
+      document.querySelector("#start-screen .gender-select").after(startBtn);
+
+      // Enable start button only when gender is selected
+      function updateStartButtonState() {
+        startBtn.disabled = !selectedGender;
+      }
+
+      btnMale.addEventListener("click", () => {
+        selectGender("male");
+        updateStartButtonState();
+      });
+      btnFemale.addEventListener("click", () => {
+        selectGender("female");
+        updateStartButtonState();
+      });
+
+    })();
   </script>
 </body>
+
+  <!-- 아이콘 요소 -->
+  <button id="kakao-channel-icon" onclick="navigateToKakaoChannel()">
+    <img src="https://quizzment.com/discord-icon.png" alt="Kakao Channel Icon">
+  </button>
+
+  <script>
+    // 아이콘 클릭 시 채널로 이동하는 함수
+    function navigateToKakaoChannel() {
+      // 카카오톡 채널 URL  
+      var kakaoChannelUrl = "http://kakaotalk.com";
+
+      // 현재 창에서 카카오톡 채널로 이동
+      window.open(kakaoChannelUrl, "_blank");
+    }
+  </script>
+
+  <!-- 사이트 전체 끝나는 곳 (</div> 바깥)에 이렇게 footer 삽입) -->
+</div> <!-- 메인 콘텐츠 끝나는 div 닫기 -->
+
+<footer style="
+  width: 100vw;
+  background-color: #ffffff;
+  padding: 10px 10px;
+  text-align: center;
+  font-size: 13px;
+  color: #333;
+  box-sizing: border-box;
+">
+  <p style="margin: 4px 0;">Advertisement Request - sc62070@gmail.com</p>
+  <p style="margin: 4px 0;">&copy; Quizzment 2025. All Rights Reserved.</p>
+
+  <button onclick="toggleBusinessInfo()" style="
+    background: none;
+    border: none;
+    color: #808080;
+    font-size: 13px;
+    cursor: pointer;
+    margin: 10px 0;
+    text-decoration: none;
+  ">
+    Company Information
+  </button>
+
+  <div id="businessInfo" style="display: none; color: #666; font-size: 12px; line-height: 1.6; margin-top: 10px;">
+    <p style="margin: 4px 0;">Company Name : Quizzment | CEO : Steve Choi</p>
+  </div>
+</footer>
+
+<script>
+  function toggleBusinessInfo() {
+    const info = document.getElementById('businessInfo');
+    info.style.display = (info.style.display === 'none' || info.style.display === '') ? 'block' : 'none';
+  }
+</script>
+</div>
+
 </html>
