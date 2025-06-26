@@ -10,4 +10,4 @@ Any infringement, including but not limited to direct copying or derivative work
 If you wish to use any part of this project, you must obtain explicit written permission from the owner.  
 **Contact: sc62070@gmail.com**
 
-**© Quizzment.
+© Quizzment.
