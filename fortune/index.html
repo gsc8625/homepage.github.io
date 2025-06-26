@@ -23,12 +23,12 @@
 <body>
   <header class="page-header wrapper">
     <h1 class="site-title">
-      <a href="index.html"><img class="logo" src="https://quizzment.com/img_logo.png" alt="Quizzment"></a>
+      <a href="https://quizzment.com/index.html"><img class="logo" src="https://quizzment.com/img_logo.png" alt="Quizzment"></a>
     </h1>
 
         <div id="menu-container"></div>
     <script>
-      fetch('menu.html')
+      fetch('https://quizzment.com/menu.html')
         .then(res => res.text())
         .then(html => {
           document.getElementById('menu-container').innerHTML = html;
