@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <title>Quizzment - Cat Tarot</title>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3187370930413699"
-     crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>
   <meta name="description"
     content="This is a website full of fun tests such as the MBTI test, personality test, love test, and facial recognition test.">
   <meta name="keywords"
@@ -28,7 +28,8 @@
 <body>
   <header class="page-header wrapper">
     <h1 class="site-title">
-      <a href="https://quizzment.com/index.html"><img class="logo" src="https://quizzment.com/img_logo.png" alt="Quizzment"></a>
+      <a href="https://quizzment.com/index.html"><img class="logo" src="https://quizzment.com/img_logo.png"
+          alt="Quizzment"></a>
     </h1>
 
     <div id="menu-container"></div>
@@ -41,49 +42,63 @@
     </script>
   </header>
 
-<section class="section">
-  <!-- Tarot Card Reading Starts Here -->
-  <div class="container" style="max-width: 700px; margin: auto; background: white; padding: 2rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
-    <img src="https://quizzment.com/cattarot/tarotcat.webp" alt="Tarot Cat" style="display: block; margin: 0 auto 1.5rem; max-width: 50%; border-radius: 12px;">
+  <section class="section">
+    <!-- Tarot Card Reading Starts Here -->
+    <div class="container"
+      style="max-width: 700px; margin: auto; background: white; padding: 2rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+      <img src="https://quizzment.com/cattarot/tarotcat.webp" alt="Tarot Cat"
+        style="display: block; margin: 0 auto 1.5rem; max-width: 50%; border-radius: 12px;">
 
-    <!-- User Input -->
-    <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;">
-      <input type="text" id="userName" placeholder="Enter your name" style="padding: 0.75rem; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem;">
-      <input type="number" id="userAge" placeholder="Enter your age" style="padding: 0.75rem; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem;">
-      <select id="userGender" style="padding: 0.75rem; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; color: #555;">
-        <option value="" disabled selected>Select gender</option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-      </select>
-      <button onclick="generateTarotReading()" style="padding: 0.75rem; background-color: #007bff; color: white; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; transition: background-color 0.3s;">
-        Get Your Tarot Reading
-      </button>
+      <!-- User Input -->
+      <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;">
+        <input type="text" id="userName" placeholder="Enter your name"
+          style="padding: 0.75rem; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem;">
+        <input type="number" id="userAge" placeholder="Enter your age"
+          style="padding: 0.75rem; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem;">
+        <select id="userGender"
+          style="padding: 0.75rem; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; color: #555;">
+          <option value="" disabled selected>Select gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+        <button onclick="generateTarotReading()"
+          style="padding: 0.75rem; background-color: #007bff; color: white; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; transition: background-color 0.3s;">
+          Get Your Tarot Reading
+        </button>
+      </div>
+
+      <!-- Loading Spinner -->
+      <div id="loading" class="spinner"
+        style="display:none; border: 6px solid #f3f3f3; border-top: 6px solid #007bff; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 2rem auto;">
+      </div>
+
+      <!-- Result Section -->
+      <div id="result" class="result"
+        style="margin-top: 2rem; padding: 1.5rem; background: #f9f9f9; border-radius: 12px; display: none;">
+        <h3 style="text-align:center; margin-bottom: 1rem; color: #333;">Your Tarot Card:</h3>
+        <div id="tarotImage" style="text-align:center; margin-bottom: 1rem;"></div>
+        <h3 style="text-align:center; margin-bottom: 1rem; color: #333;">Reading Explanation:</h3>
+        <div id="readingText" style="font-size: 1rem; color: #555; line-height: 1.6;"></div>
+      </div>
     </div>
+    <!-- Tarot Card Reading Ends Here -->
+  </section>
 
-    <!-- Loading Spinner -->
-    <div id="loading" class="spinner" style="display:none; border: 6px solid #f3f3f3; border-top: 6px solid #007bff; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 2rem auto;"></div>
+  <style>
+    button:hover {
+      background-color: #0056b3 !important;
+    }
 
-    <!-- Result Section -->
-    <div id="result" class="result" style="margin-top: 2rem; padding: 1.5rem; background: #f9f9f9; border-radius: 12px; display: none;">
-      <h3 style="text-align:center; margin-bottom: 1rem; color: #333;">Your Tarot Card:</h3>
-      <div id="tarotImage" style="text-align:center; margin-bottom: 1rem;"></div>
-      <h3 style="text-align:center; margin-bottom: 1rem; color: #333;">Reading Explanation:</h3>
-      <div id="readingText" style="font-size: 1rem; color: #555; line-height: 1.6;"></div>
-    </div>
-  </div>
-  <!-- Tarot Card Reading Ends Here -->
-</section>
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
 
-<style>
-  button:hover {
-    background-color: #0056b3 !important;
-  }
-
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-</style>
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 
 
   <!-- 아이콘 요소 -->
@@ -104,11 +119,13 @@
   <!-- 사이트 전체 끝나는 곳 (</div> 바깥에 이렇게 footer 삽입) -->
   </div> <!-- 메인 콘텐츠 끝나는 div 닫기 -->
 
-  <footer style="width: 100vw; background-color: #ffffff; padding: 10px 10px; text-align: center; font-size: 13px; color: #333; box-sizing: border-box;">
+  <footer
+    style="width: 100vw; background-color: #ffffff; padding: 10px 10px; text-align: center; font-size: 13px; color: #333; box-sizing: border-box;">
     <p style="margin: 4px 0;">Advertisement Request - sc62070@gmail.com</p>
     <p style="margin: 4px 0;">&copy; Quizzment 2025. All Rights Reserved.</p>
 
-    <button onclick="toggleBusinessInfo()" style="background: none; border: none; color: #808080; font-size: 13px; cursor: pointer; margin: 10px 0; text-decoration: none;">
+    <button onclick="toggleBusinessInfo()"
+      style="background: none; border: none; color: #808080; font-size: 13px; cursor: pointer; margin: 10px 0; text-decoration: none;">
       Company Information
     </button>
 

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <title>Quizzment - Fortune Teller</title>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3187370930413699"
-     crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>
   <meta name="description" content="Discover your unique fortune with our fortune teller on Quizzment!">
   <meta name="keywords" content="Fortune, Fortune Teller, Quizzment, Life Advice, Daily Fortune, Horoscope">
   <meta property="og:type" content="website">
@@ -20,13 +21,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="/favicon.png">
 </head>
+
 <body>
   <header class="page-header wrapper">
     <h1 class="site-title">
-      <a href="https://quizzment.com/index.html"><img class="logo" src="https://quizzment.com/img_logo.png" alt="Quizzment"></a>
+      <a href="https://quizzment.com/index.html"><img class="logo" src="https://quizzment.com/img_logo.png"
+          alt="Quizzment"></a>
     </h1>
 
-        <div id="menu-container"></div>
+    <div id="menu-container"></div>
     <script>
       fetch('https://quizzment.com/menu.html')
         .then(res => res.text())
@@ -38,26 +41,35 @@
 
   <section class="section">
     <!-- Fortune Teller Section -->
-    <div class="container" style="max-width: 700px; margin: auto; background: white; padding: 2rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+    <div class="container"
+      style="max-width: 700px; margin: auto; background: white; padding: 2rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
       <h2 style="text-align:center; font-size: 2rem; margin-bottom: 1.5rem; color: #333;">🔮 Fortune Teller</h2>
 
       <!-- User Input -->
       <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;">
-        <input type="text" id="userName" placeholder="Enter your name" style="padding: 0.75rem; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem;">
-        <input type="number" id="userAge" placeholder="Enter your age" style="padding: 0.75rem; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem;">
-        <select id="userGender" style="padding: 0.75rem; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; color: #555;">
+        <input type="text" id="userName" placeholder="Enter your name"
+          style="padding: 0.75rem; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem;">
+        <input type="number" id="userAge" placeholder="Enter your age"
+          style="padding: 0.75rem; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem;">
+        <select id="userGender"
+          style="padding: 0.75rem; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; color: #555;">
           <option value="" disabled selected>Select gender</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
         </select>
-        <button onclick="generateFortune()" style="padding: 0.75rem; background-color: #28a745; color: white; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; transition: background-color 0.3s;">Reveal My Fortune</button>
+        <button onclick="generateFortune()"
+          style="padding: 0.75rem; background-color: #28a745; color: white; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; transition: background-color 0.3s;">Reveal
+          My Fortune</button>
       </div>
 
       <!-- Loading Spinner -->
-      <div id="loading" class="spinner" style="display:none; border: 6px solid #f3f3f3; border-top: 6px solid #28a745; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 2rem auto;"></div>
+      <div id="loading" class="spinner"
+        style="display:none; border: 6px solid #f3f3f3; border-top: 6px solid #28a745; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 2rem auto;">
+      </div>
 
       <!-- Result Section -->
-      <div id="result" class="result" style="margin-top: 2rem; padding: 1.5rem; background: #f9f9f9; border-radius: 12px; display: none;">
+      <div id="result" class="result"
+        style="margin-top: 2rem; padding: 1.5rem; background: #f9f9f9; border-radius: 12px; display: none;">
         <h3 style="text-align:center; margin-bottom: 1rem; color: #333;">Your Fortune:</h3>
         <div id="fortuneText" style="font-size: 1rem; color: #555; line-height: 1.6;"></div>
       </div>
@@ -167,9 +179,15 @@
     }
 
     @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
     }
   </style>
 </body>
+
 </html>

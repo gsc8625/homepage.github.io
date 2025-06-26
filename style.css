@@ -1,5 +1,5 @@
 @charset "UTF-8";
-    
+
 html {
     font-size: 100%;
 }
@@ -12,9 +12,10 @@ html {
     font-weight: normal;
     font-style: normal;
 }
+
 .section {
     margin-top: 50px;
-}    
+}
 
 
 body {
@@ -132,12 +133,12 @@ footer p {
     .page-title {
         font-size: 2rem;
     }
-    
+
     .main-nav {
         font-size: 0.9rem;
         margin-top: 10px;
     }
-    
+
     .main-nav li {
         margin: 0 5px;
     }
@@ -145,7 +146,7 @@ footer p {
     .main-nav a {
         font-size: 0.85rem;
     }
-    
+
     .home-content {
         margin-top: 12%;
     }
@@ -156,12 +157,15 @@ footer p {
     }
 
     .grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 최소 크기 더 줄이기 */
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        /* 최소 크기 더 줄이기 */
         gap: 10px;
         margin-top: 4%;
     }
 
-    .kakao_ad, .kakao_ad2, .coupang_ad {
+    .kakao_ad,
+    .kakao_ad2,
+    .coupang_ad {
         width: 90%;
         max-width: 280px;
         margin: 0 auto;
@@ -209,7 +213,9 @@ footer p {
         height: auto;
     }
 
-    .kakao_ad, .kakao_ad2, .coupang_ad {
+    .kakao_ad,
+    .kakao_ad2,
+    .coupang_ad {
         width: 85%;
         max-width: 230px;
     }
@@ -221,13 +227,15 @@ footer p {
     footer p {
         font-size: 0.7rem;
     }
-	
-@media screen and (max-width: 400px) {
-  .site-title {
-    all: unset; /* Remove h1 styling */
-    display: contents; /* Makes the <a> behave like it's not wrapped */
-  }
-}
+
+    @media screen and (max-width: 400px) {
+        .site-title {
+            all: unset;
+            /* Remove h1 styling */
+            display: contents;
+            /* Makes the <a> behave like it's not wrapped */
+        }
+    }
 
 
 }
