@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <title>Quizzment</title>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3187370930413699"
-     crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>
   <meta name="description"
     content="Website full of fun tests such as the MBTI test, personality test, love test, and facial recognition test.">
   <meta name="keywords"
@@ -24,24 +24,30 @@
   <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="https://quizzment.com/favicon.png">
 </head>
+
 <body>
   <header class="page-header wrapper">
     <h1 class="site-title">
       <a href="https://quizzment.com/"><img class="logo" src="https://quizzment.com/img_logo.png" alt="Quizzment"></a>
     </h1>
 
-    <nav>
-      <u1 class="main-nav">
-        <li> <a href="https://quizzment.com/index.html">Tests</a></li>
-        <li> <a href="https://quizzment.com/etc.html">Etc</a></li>
-      </u1>
-    </nav>
+
+
+
+    <div id="menu-container"></div>
+    <script>
+      fetch('menu.html')
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById('menu-container').innerHTML = html;
+        });
+    </script>
   </header>
 
   <div style="text-align : center;">
-     <img src="https://quizzment.com/featuredimage.png" alt="이미지 메인">
+    <img src="https://quizzment.com/featuredimage.png" alt="이미지 메인">
 
-</div>
+  </div>
   <section class="section">
   </section>
 </body>
@@ -50,13 +56,13 @@
 <!--시작화면-->
 <div class="wrapper grid" style="text-align : center;">
 
-    <div class="item">
+  <div class="item">
     <a href="https://quizzment.com/tetoegen/index.html">
       <img src="https://quizzment.com/tetoegen/teto-egen.webp" alt="Teto or Egen Test">
     </a>
   </div>
 
-    <div class="item">
+  <div class="item">
     <a href="https://quizzment.com/cattarot/index.html">
       <img src="https://quizzment.com/cattarot/tarot-cat.jpg" alt="Cat Tarot">
     </a>
@@ -126,4 +132,5 @@
   }
 </script>
 </div>
+
 </html>

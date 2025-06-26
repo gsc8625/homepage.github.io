@@ -31,12 +31,14 @@
       <a href="https://quizzment.com/index.html"><img class="logo" src="https://quizzment.com/img_logo.png" alt="Quizzment"></a>
     </h1>
 
-    <nav>
-      <u1 class="main-nav">
-        <li> <a href="https://quizzment.com/index.html">Tests</a></li>
-        <li> <a href="https://quizzment.com/etc.html">Etc</a></li>
-      </u1>
-    </nav>
+    <div id="menu-container"></div>
+    <script>
+      fetch('menu.html')
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById('menu-container').innerHTML = html;
+        });
+    </script>
   </header>
 
 <section class="section">
