@@ -165,7 +165,7 @@
     <h1>Teto-Egen Personality Test</h1>
 
     <div id="start-screen">
-      <img src="teto-egen.jpg" alt="Teto Egen" />
+      <img src="teto-egen.webp" alt="Teto Egen" />
       <p style="text-align:center; margin-bottom: 20px;">Select your gender to begin the test.</p>
       <div class="gender-select">
         <button id="btn-male">Male</button>
@@ -328,28 +328,8 @@
       let questions = [];
       const answerWeights = [3, 2, 1, 0]; // Strongly Agree to Strongly Disagree
 
-      function resetGenderButtons() {
-        btnMale.classList.remove("selected");
-        btnFemale.classList.remove("selected");
-      }
-
-      function selectGender(gender) {
+      function startQuiz(gender) {
         selectedGender = gender;
-        resetGenderButtons();
-        if (gender === "male") btnMale.classList.add("selected");
-        else btnFemale.classList.add("selected");
-      }
-
-      btnMale.addEventListener("click", () => selectGender("male"));
-      btnFemale.addEventListener("click", () => selectGender("female"));
-
-      // Start quiz when gender selected and start clicked
-      function startQuiz() {
-        if (!selectedGender) {
-          alert("Please select your gender to start the test.");
-          return;
-        }
-        // Prepare quiz
         questions = selectedGender === "male" ? maleQuestions : femaleQuestions;
         scores = { teto: 0, egen: 0 };
         currentQuestion = 0;
@@ -440,31 +420,11 @@
         resultScreen.style.display = "none";
         quizScreen.style.display = "none";
         startScreen.style.display = "block";
-        resetGenderButtons();
         selectedGender = null;
       });
 
-      // Add Start Quiz button below gender selection
-      const startBtn = document.createElement("button");
-      startBtn.textContent = "Start the Quiz";
-      startBtn.style.marginTop = "10px";
-      startBtn.disabled = true;
-      startBtn.addEventListener("click", startQuiz);
-      document.querySelector("#start-screen .gender-select").after(startBtn);
-
-      // Enable start button only when gender is selected
-      function updateStartButtonState() {
-        startBtn.disabled = !selectedGender;
-      }
-
-      btnMale.addEventListener("click", () => {
-        selectGender("male");
-        updateStartButtonState();
-      });
-      btnFemale.addEventListener("click", () => {
-        selectGender("female");
-        updateStartButtonState();
-      });
+      btnMale.addEventListener("click", () => startQuiz("male"));
+      btnFemale.addEventListener("click", () => startQuiz("female"));
 
     })();
   </script>
