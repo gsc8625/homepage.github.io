@@ -384,9 +384,18 @@
         const maxScore = questions.length * 3;
         const tetoPercent = Math.round((scores.teto / maxScore) * 100);
         const egenPercent = Math.round((scores.egen / maxScore) * 100);
-        const dominantType = tetoPercent >= egenPercent ? "teto" : "egen";
-        const dominantPercent = dominantType === "teto" ? tetoPercent : egenPercent;
-        const tier = getTier(dominantPercent, selectedGender);
+
+        // Always show Teto result if Teto percentage is higher, otherwise show Egen
+        let dominantType, dominantPercent, tier;
+        if (tetoPercent > egenPercent) {
+          dominantType = "teto";
+          dominantPercent = tetoPercent;
+          tier = getTier(dominantPercent, selectedGender);
+        } else {
+          dominantType = "egen";
+          dominantPercent = egenPercent;
+          tier = getTier(dominantPercent, selectedGender);
+        }
 
         if (!tier) {
           resultTitle.innerHTML = "Unable to determine result. Please try again.";
@@ -399,7 +408,7 @@
         resultDescription.textContent = tier.description;
 
         // Set image filename based on tier title, remove spaces and special chars for safety
-        const imgFileName = "https://quizzment.com/tetoegen/images/" + tier.title.replace(/[^a-zA-Z0-9]/g, "") + ".jpg";
+        const imgFileName = "images/" + tier.title.replace(/[^a-zA-Z0-9]/g, "") + ".jpg";
         resultImage.src = imgFileName;
         resultImage.alt = tier.title;
         resultImage.style.display = "block";
