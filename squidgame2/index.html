@@ -1,0 +1,228 @@
+ <!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Quizzment - Squid Game Season 1 Character Test</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3187370930413699"
+        crossorigin="anonymous"></script>
+    <meta name="description"
+        content="Website full of fun tests such as the MBTI test, personality test, love test, and facial recognition test.">
+    <meta name="keywords"
+        content="Tests, psychological tests, profile tests, personality tests, MBTI, various tests, boredom-killing tests, love tests, romance tests, radio love test, The Glory quiz, The Glory Season 2 test, old-school person test, newspaper personality test, weakness test, strength test, fortune test, Quizzment, test it, Christmas test, MBTI test, MBTI, MBTI test, color MBTI, radio love test, radio test, rolling paper test, rolling paper MBTI.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Quizzment">
+    <meta property="og:description"
+        content="This is a website full of fun tests such as the MBTI test, personality test, and facial recognition test.">
+    <meta property="og:image" content="https://quizzment.com/featuredimage.png">
+    <meta property="og:url" content="https://quizzment.com/">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="google-site-verification" content="DMg8QOrWVNM-tnh8rDjHIwFj0Ie_BsIiJkNmT_iHJrk" />
+    <link rel="stylesheet" href="https://quizzment.com/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://quizzment.com/favicon.png">
+</head>
+
+<body>
+    <header class="page-header wrapper">
+        <h1 class="site-title">
+            <a href="https://quizzment.com/"><img class="logo" src="https://quizzment.com/img_logo.png"
+                    alt="Quizzment"></a>
+        </h1>
+
+        <div id="menu-container"></div>
+        <script>
+            fetch('https://quizzment.com/menu.html')
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById('menu-container').innerHTML = html;
+                });
+        </script>
+    </header>
+
+
+
+<section id="squid-game-quiz" style="max-width: 600px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif; background:#111; color:#fff; border-radius: 12px;">
+  <style>
+    #squid-game-quiz h1, #squid-game-quiz h2, #squid-game-quiz h3, #squid-game-quiz p {
+      text-align: center;
+    }
+    #squid-game-quiz img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+    #squid-game-quiz button {
+      width: 100%;
+      padding: 12px;
+      background-color: #d32f2f;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 8px 0;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+    #squid-game-quiz button:hover {
+      background-color: #b71c1c;
+    }
+  </style>
+
+  <h1>Which Squid Game Season 2 Character Are You?</h1>
+  <div id="sg2-start-screen">
+    <img src="https://quizzment.com/squidgame2/squidgame2intro.webp" alt="Squid Game 2 Poster">
+    <button onclick="startSG2Quiz()">Start Quiz</button>
+  </div>
+  <div id="sg2-quiz-box" style="display:none;"></div>
+  <div id="sg2-result-box" style="display:none;"></div>
+
+  <script>
+    const sg2Questions = [
+      "You're surrounded with no clear escape. What do you do?",
+      "A suspicious man offers you a mysterious opportunity. Your move?",
+      "You're told to spy on your teammate secretly. Do you comply?",
+      "You overhear a dangerous plan that might help others. Do you join?",
+      "A chance to blend in as a guard presents itself. What do you do?",
+      "You sense the Front Man has a hidden identity. What's your play?",
+      "You discover a hidden surveillance device. Your reaction?",
+      "You're recruited again. This time, with a higher stake. Your response?",
+      "A fellow player is crying uncontrollably. What do you do?",
+      "You witness someone breaking the rules. Do you act?",
+      "You're offered a fast-track to the finale, but it's unethical. Do you take it?",
+      "You uncover a way to escape the game. What’s your next step?"
+    ];
+
+    const sg2Choices = [
+      ["Confront the threat and fight", "Pretend to surrender and strike later", "Find a hiding spot and plan", "Run even if clueless"],
+      ["Accept without hesitation", "Test him with questions", "Politely decline", "Walk away without a word"],
+      ["Agree but feel guilt", "Refuse on moral grounds", "Report the one who asked", "Spy and use the info later"],
+      ["Become the leader of the plan", "Support from the shadows", "Warn others but stay out", "Ignore it completely"],
+      ["Take the disguise and infiltrate", "Observe silently", "Refuse and stay player", "Expose the opportunity"],
+      ["Investigate in secret", "Confront directly", "Discuss with someone you trust", "Stay out—it’s too risky"],
+      ["Destroy it to stop spying", "Use it for your own gain", "Report it discreetly", "Ignore it and move on"],
+      ["Join again, motivated by revenge", "Negotiate the terms", "Refuse to play again", "Accept with hesitation"],
+      ["Comfort them with empathy", "Stay quiet nearby", "Ignore it", "Exploit their weakness"],
+      ["Call out the cheater publicly", "Privately warn them", "Report them secretly", "Let it slide if it helps you"],
+      ["Take it—it’s survival", "Weigh the options", "Reject it instantly", "Reveal it to others"],
+      ["Escape and never look back", "Tell a trusted ally", "Alert the authorities", "Cover it to keep things fair"]
+    ];
+
+    const sg2Characters = [
+      { name: "Gi-Hun (New Face)", range: [0, 10], img: "season2_gihun.jpg", desc: "You still carry hope, but the world changed you. A new version of Gi-Hun." },
+      { name: "The Recruiter", range: [11, 20], img: "recruiter.jpg", desc: "Charming and clever. You find talent in darkness and convince them to join." },
+      { name: "The Front Man", range: [21, 27], img: "frontman_s2.jpg", desc: "A man behind the mask. You enforce the rules and hide your true motives." },
+      { name: "Thanos (The New Player)", range: [28, 34], img: "thanos.jpg", desc: "A wild card. No one knows what you’ll do next. Bold and unpredictable." },
+      { name: "Detective Hwang Jun-ho", range: [35, 45], img: "junho.jpg", desc: "You seek justice in the shadows. Your instincts guide you through chaos." }
+    ];
+
+    let sg2Current = 0;
+    let sg2Score = 0;
+
+    function startSG2Quiz() {
+      document.getElementById("sg2-start-screen").style.display = "none";
+      document.getElementById("sg2-quiz-box").style.display = "block";
+      sg2Current = 0;
+      sg2Score = 0;
+      showSG2Question();
+    }
+
+    function showSG2Question() {
+      const container = document.getElementById("sg2-quiz-box");
+      const q = sg2Questions[sg2Current];
+      const choices = sg2Choices[sg2Current];
+      container.innerHTML = `<h2>Q${sg2Current + 1}. ${q}</h2>`;
+      choices.forEach((choice, idx) => {
+        container.innerHTML += `<button onclick="answerSG2(${3 - idx})">${choice}</button><br>`;
+      });
+      container.innerHTML += `<div style='margin-top:20px;'>${sg2Current + 1} / ${sg2Questions.length}</div>`;
+    }
+
+    function answerSG2(score) {
+      sg2Score += score;
+      sg2Current++;
+      if (sg2Current >= sg2Questions.length) {
+        showSG2Result();
+      } else {
+        showSG2Question();
+      }
+    }
+
+    function showSG2Result() {
+      document.getElementById("sg2-quiz-box").style.display = "none";
+      const resultBox = document.getElementById("sg2-result-box");
+      resultBox.style.display = "block";
+      const character = sg2Characters.find(c => sg2Score >= c.range[0] && sg2Score <= c.range[1]);
+      resultBox.innerHTML = `
+        <h2>You are <span style='color:#f44336;'>${character.name}</span></h2>
+        <img src="${character.img}" alt="${character.name}" style="width:80%; max-width:300px; border-radius:12px; margin:20px 0;">
+        <p style="font-size:16px;">${character.desc}</p>
+        <button onclick="location.reload()">Try Again</button>
+      `;
+    }
+  </script>
+</section>
+
+
+
+
+    
+ <!-- 아이콘 요소 -->
+    <button id="kakao-channel-icon" onclick="navigateToKakaoChannel()">
+        <img src="https://quizzment.com/discord-icon.png" alt="Kakao Channel Icon">
+    </button>
+
+    <script>
+        // 아이콘 클릭 시 채널로 이동하는 함수
+        function navigateToKakaoChannel() {
+            // 카카오톡 채널 URL  
+            var kakaoChannelUrl = "http://kakaotalk.com";
+
+            // 현재 창에서 카카오톡 채널로 이동
+            window.open(kakaoChannelUrl, "_blank");
+        }
+    </script>
+
+    <!-- 사이트 전체 끝나는 곳 (</div> 바깥)에 이렇게 footer 삽입) -->
+    </div> <!-- 메인 콘텐츠 끝나는 div 닫기 -->
+
+    <footer style="
+  width: 100vw;
+  background-color: #ffffff;
+  padding: 10px 10px;
+  text-align: center;
+  font-size: 13px;
+  color: #333;
+  box-sizing: border-box;
+">
+        <p style="margin: 4px 0;">Advertisement Request - sc62070@gmail.com</p>
+        <p style="margin: 4px 0;">&copy; Quizzment 2025. All Rights Reserved.</p>
+
+        <button onclick="toggleBusinessInfo()" style="
+    background: none;
+    border: none;
+    color: #808080;
+    font-size: 13px;
+    cursor: pointer;
+    margin: 10px 0;
+    text-decoration: none;
+  ">
+            Company Information
+        </button>
+
+        <div id="businessInfo" style="display: none; color: #666; font-size: 12px; line-height: 1.6; margin-top: 10px;">
+            <p style="margin: 4px 0;">Company Name : Quizzment | CEO : Steve Choi</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleBusinessInfo() {
+            const info = document.getElementById('businessInfo');
+            info.style.display = (info.style.display === 'none' || info.style.display === '') ? 'block' : 'none';
+        }
+    </script>
+    </div>
+
+</html>
