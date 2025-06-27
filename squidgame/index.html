@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Quizzment</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3187370930413699"
+        crossorigin="anonymous"></script>
+    <meta name="description"
+        content="Website full of fun tests such as the MBTI test, personality test, love test, and facial recognition test.">
+    <meta name="keywords"
+        content="Tests, psychological tests, profile tests, personality tests, MBTI, various tests, boredom-killing tests, love tests, romance tests, radio love test, The Glory quiz, The Glory Season 2 test, old-school person test, newspaper personality test, weakness test, strength test, fortune test, Quizzment, test it, Christmas test, MBTI test, MBTI, MBTI test, color MBTI, radio love test, radio test, rolling paper test, rolling paper MBTI.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Quizzment">
+    <meta property="og:description"
+        content="This is a website full of fun tests such as the MBTI test, personality test, and facial recognition test.">
+    <meta property="og:image" content="https://quizzment.com/featuredimage.png">
+    <meta property="og:url" content="https://quizzment.com/">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="google-site-verification" content="DMg8QOrWVNM-tnh8rDjHIwFj0Ie_BsIiJkNmT_iHJrk" />
+    <link rel="stylesheet" href="https://quizzment.com/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://quizzment.com/favicon.png">
+</head>
+
+<body>
+    <header class="page-header wrapper">
+        <h1 class="site-title">
+            <a href="https://quizzment.com/"><img class="logo" src="https://quizzment.com/img_logo.png"
+                    alt="Quizzment"></a>
+        </h1>
+
+        <div id="menu-container"></div>
+        <script>
+            fetch('https://quizzment.com/menu.html')
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById('menu-container').innerHTML = html;
+                });
+        </script>
+    </header>
+
+
+
+
+
+<!-- 메인 콘텐츠 시작 -->
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 아이콘 요소 -->
+    <button id="kakao-channel-icon" onclick="navigateToKakaoChannel()">
+        <img src="https://quizzment.com/discord-icon.png" alt="Kakao Channel Icon">
+    </button>
+
+    <script>
+        // 아이콘 클릭 시 채널로 이동하는 함수
+        function navigateToKakaoChannel() {
+            // 카카오톡 채널 URL  
+            var kakaoChannelUrl = "http://kakaotalk.com";
+
+            // 현재 창에서 카카오톡 채널로 이동
+            window.open(kakaoChannelUrl, "_blank");
+        }
+    </script>
+
+    <!-- 사이트 전체 끝나는 곳 (</div> 바깥)에 이렇게 footer 삽입) -->
+    </div> <!-- 메인 콘텐츠 끝나는 div 닫기 -->
+
+    <footer style="
+  width: 100vw;
+  background-color: #ffffff;
+  padding: 10px 10px;
+  text-align: center;
+  font-size: 13px;
+  color: #333;
+  box-sizing: border-box;
+">
+        <p style="margin: 4px 0;">Advertisement Request - sc62070@gmail.com</p>
+        <p style="margin: 4px 0;">&copy; Quizzment 2025. All Rights Reserved.</p>
+
+        <button onclick="toggleBusinessInfo()" style="
+    background: none;
+    border: none;
+    color: #808080;
+    font-size: 13px;
+    cursor: pointer;
+    margin: 10px 0;
+    text-decoration: none;
+  ">
+            Company Information
+        </button>
+
+        <div id="businessInfo" style="display: none; color: #666; font-size: 12px; line-height: 1.6; margin-top: 10px;">
+            <p style="margin: 4px 0;">Company Name : Quizzment | CEO : Steve Choi</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleBusinessInfo() {
+            const info = document.getElementById('businessInfo');
+            info.style.display = (info.style.display === 'none' || info.style.display === '') ? 'block' : 'none';
+        }
+    </script>
+    </div>
+
+</html>
