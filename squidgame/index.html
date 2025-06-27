@@ -47,17 +47,173 @@
 
 
 <!-- 메인 콘텐츠 시작 -->
- 
+ <section class="section" id="squid-game-test">
+  <style>
+    #squid-game-test * {
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
 
+    #squid-game-test {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
 
+    #squid-game-test img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
 
+    #squid-game-test button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      background: #d62828;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
 
+    #squid-game-test .option {
+      background: #eee;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
 
+    #squid-game-test .option:hover {
+      background: #ddd;
+    }
 
+    #squid-game-test .progress-bar {
+      height: 10px;
+      background: #ccc;
+      margin: 20px 0;
+      border-radius: 5px;
+      overflow: hidden;
+    }
 
+    #squid-game-test .progress {
+      height: 100%;
+      background: #d62828;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+  </style>
 
+  <div id="sg-start-screen">
+    <img src="squidgame.jpg" alt="Squid Game">
+    <h2>Which Squid Game Character Are You?</h2>
+    <button onclick="startSquidTest()">Start Test</button>
+  </div>
 
+  <div id="sg-quiz-screen" style="display:none;">
+    <div class="progress-bar"><div class="progress" id="sg-progress"></div></div>
+    <h3 id="sg-question"></h3>
+    <div id="sg-options"></div>
+  </div>
 
+  <div id="sg-result-screen" style="display:none;">
+    <h2 id="sg-result-name"></h2>
+    <img id="sg-result-img" src="" alt="Character" />
+    <p id="sg-result-desc"></p>
+    <button onclick="restartSquidTest()">Try Again</button>
+  </div>
+
+  <script>
+    const sgQuestions = [
+      { q: "You find a wallet full of cash. What do you do?", scores: [2, 1, 0, -1] },
+      { q: "Your team is about to lose. What’s your move?", scores: [0, 2, 1, -1] },
+      { q: "You need money fast. What do you do?", scores: [2, 1, 0, -1] },
+      { q: "Someone betrays your trust. How do you react?", scores: [0, 1, 2, -1] },
+      { q: "What's your strongest trait?", scores: [1, 2, 0, -1] },
+      { q: "You see someone struggling. What's your reaction?", scores: [2, 0, 1, -1] },
+      { q: "You have to pick a team. What's your strategy?", scores: [0, 2, 1, -1] },
+      { q: "When under pressure, you are...", scores: [1, 2, 0, -1] }
+    ];
+
+    const sgCharacters = [
+      { name: "Seong Gi-Hun", score: 0, img: "seonggihun.jpg", desc: "Kind-hearted and flawed, but always hopeful." },
+      { name: "Ali Abdul", score: 4, img: "abdulali.jpg", desc: "Loyal, trusting, and full of heart." },
+      { name: "Kang Sae-Byeok", score: 8, img: "kangsaebyeok.jpg", desc: "Strong, quiet, and focused on survival." },
+      { name: "Detective Jun-Ho", score: 12, img: "junho.jpg", desc: "Intelligent, driven, and righteous." },
+      { name: "Cho Sang-Woo", score: 16, img: "choisangwoo.jpg", desc: "Strategic, ambitious, and morally grey." },
+      { name: "Oh Il-Nam", score: 20, img: "ohilnam.jpg", desc: "Wise and secretive, with hidden depths." }
+    ];
+
+    const answerText = [
+      "Take it and run",
+      "Try to return it",
+      "Leave it alone",
+      "Report it to the police"
+    ];
+
+    let sgCurrentQ = 0;
+    let sgTotalScore = 0;
+
+    function startSquidTest() {
+      document.getElementById("sg-start-screen").style.display = "none";
+      document.getElementById("sg-quiz-screen").style.display = "block";
+      showSquidQuestion();
+    }
+
+    function showSquidQuestion() {
+      const q = sgQuestions[sgCurrentQ];
+      document.getElementById("sg-question").textContent = `Q${sgCurrentQ + 1}. ${q.q}`;
+      const optionsDiv = document.getElementById("sg-options");
+      optionsDiv.innerHTML = "";
+
+      answerText.forEach((text, i) => {
+        const opt = document.createElement("div");
+        opt.className = "option";
+        opt.textContent = text;
+        opt.onclick = () => {
+          sgTotalScore += q.scores[i];
+          sgCurrentQ++;
+          updateSGProgress();
+          if (sgCurrentQ < sgQuestions.length) {
+            showSquidQuestion();
+          } else {
+            showSquidResult();
+          }
+        };
+        optionsDiv.appendChild(opt);
+      });
+    }
+
+    function updateSGProgress() {
+      const percent = Math.round((sgCurrentQ / sgQuestions.length) * 100);
+      document.getElementById("sg-progress").style.width = percent + "%";
+    }
+
+    function showSquidResult() {
+      document.getElementById("sg-quiz-screen").style.display = "none";
+      document.getElementById("sg-result-screen").style.display = "block";
+
+      // Find closest match
+      const match = sgCharacters.reduce((prev, curr) =>
+        Math.abs(curr.score - sgTotalScore) < Math.abs(prev.score - sgTotalScore) ? curr : prev
+      );
+
+      document.getElementById("sg-result-name").textContent = match.name;
+      document.getElementById("sg-result-img").src = match.img;
+      document.getElementById("sg-result-desc").textContent = match.desc;
+    }
+
+    function restartSquidTest() {
+      sgCurrentQ = 0;
+      sgTotalScore = 0;
+      document.getElementById("sg-result-screen").style.display = "none";
+      document.getElementById("sg-start-screen").style.display = "block";
+      document.getElementById("sg-progress").style.width = "0%";
+    }
+  </script>
+</section>
 
 
     <!-- 아이콘 요소 -->
