@@ -399,7 +399,7 @@
         resultDescription.textContent = tier.description;
 
         // Set image filename based on tier title, remove spaces and special chars for safety
-        const imgFileName = tier.title.replace(/[^a-zA-Z0-9]/g, "") + ".jpg";
+        const imgFileName = "https://quizzment.com/teto/images/" + tier.title.replace(/[^a-zA-Z0-9]/g, "") + ".jpg";
         resultImage.src = imgFileName;
         resultImage.alt = tier.title;
         resultImage.style.display = "block";
@@ -436,7 +436,7 @@
   }
 </script>
 
-<!-- 사이트 전체 끝나는 곳 (</div> 바깥)에 이렇게 footer 삽입) -->
+<!-- 사이트 전체 끝나는 곳 (</div> 바깥에 이렇게 footer 삽입) -->
 </div> <!-- 메인 콘텐츠 끝나는 div 닫기 -->
 
 <footer style="

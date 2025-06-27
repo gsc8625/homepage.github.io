@@ -47,7 +47,7 @@
 
 
 <!-- 메인 콘텐츠 시작 -->
- <section class="section" id="squid-game-test">
+<section class="section" id="squid-game-test">
   <style>
     #squid-game-test * {
       box-sizing: border-box;
@@ -127,30 +127,87 @@
 
   <script>
     const sgQuestions = [
-      { q: "You find a wallet full of cash. What do you do?", scores: [2, 1, 0, -1] },
-      { q: "Your team is about to lose. What’s your move?", scores: [0, 2, 1, -1] },
-      { q: "You need money fast. What do you do?", scores: [2, 1, 0, -1] },
-      { q: "Someone betrays your trust. How do you react?", scores: [0, 1, 2, -1] },
-      { q: "What's your strongest trait?", scores: [1, 2, 0, -1] },
-      { q: "You see someone struggling. What's your reaction?", scores: [2, 0, 1, -1] },
-      { q: "You have to pick a team. What's your strategy?", scores: [0, 2, 1, -1] },
-      { q: "When under pressure, you are...", scores: [1, 2, 0, -1] }
+      {
+        q: "You find a wallet full of cash on the ground.",
+        options: [
+          { text: "Keep it without hesitation", score: 3 },
+          { text: "Look around and keep it discreetly", score: 2 },
+          { text: "Try to find the owner", score: 1 },
+          { text: "Turn it in to the police", score: 0 }
+        ]
+      },
+      {
+        q: "Your team is about to lose the game. What do you do?",
+        options: [
+          { text: "Use strategy to turn things around", score: 3 },
+          { text: "Motivate everyone to not give up", score: 2 },
+          { text: "Stay quiet and follow orders", score: 1 },
+          { text: "Blame others for losing", score: 0 }
+        ]
+      },
+      {
+        q: "You're broke and desperate. What’s your next move?",
+        options: [
+          { text: "Take a high-risk opportunity", score: 3 },
+          { text: "Ask friends/family for help", score: 2 },
+          { text: "Get a part-time job immediately", score: 1 },
+          { text: "Stay home and hope things get better", score: 0 }
+        ]
+      },
+      {
+        q: "Someone betrays you during a game. How do you respond?",
+        options: [
+          { text: "Seek revenge smartly", score: 3 },
+          { text: "Cut ties completely", score: 2 },
+          { text: "Give them a second chance", score: 1 },
+          { text: "Blame yourself quietly", score: 0 }
+        ]
+      },
+      {
+        q: "Which word best describes your strength?",
+        options: [
+          { text: "Intelligence", score: 3 },
+          { text: "Kindness", score: 2 },
+          { text: "Courage", score: 1 },
+          { text: "Luck", score: 0 }
+        ]
+      },
+      {
+        q: "A teammate is hurt and slowing down the group.",
+        options: [
+          { text: "Leave them behind for survival", score: 3 },
+          { text: "Carry them no matter what", score: 2 },
+          { text: "Encourage them to keep going", score: 1 },
+          { text: "Wait and hope they get better", score: 0 }
+        ]
+      },
+      {
+        q: "How do you build your team?",
+        options: [
+          { text: "Choose only strong players", score: 3 },
+          { text: "Pick a mix of people", score: 2 },
+          { text: "Invite people you know", score: 1 },
+          { text: "Let others decide", score: 0 }
+        ]
+      },
+      {
+        q: "You’re under extreme pressure. What do you do?",
+        options: [
+          { text: "Stay focused and lead", score: 3 },
+          { text: "Stay calm and adapt", score: 2 },
+          { text: "Follow someone else’s lead", score: 1 },
+          { text: "Freeze or panic", score: 0 }
+        ]
+      }
     ];
 
     const sgCharacters = [
       { name: "Seong Gi-Hun", score: 0, img: "seonggihun.jpg", desc: "Kind-hearted and flawed, but always hopeful." },
-      { name: "Ali Abdul", score: 4, img: "abdulali.jpg", desc: "Loyal, trusting, and full of heart." },
-      { name: "Kang Sae-Byeok", score: 8, img: "kangsaebyeok.jpg", desc: "Strong, quiet, and focused on survival." },
-      { name: "Detective Jun-Ho", score: 12, img: "junho.jpg", desc: "Intelligent, driven, and righteous." },
-      { name: "Cho Sang-Woo", score: 16, img: "choisangwoo.jpg", desc: "Strategic, ambitious, and morally grey." },
-      { name: "Oh Il-Nam", score: 20, img: "ohilnam.jpg", desc: "Wise and secretive, with hidden depths." }
-    ];
-
-    const answerText = [
-      "Take it and run",
-      "Try to return it",
-      "Leave it alone",
-      "Report it to the police"
+      { name: "Ali Abdul", score: 5, img: "abdulali.jpg", desc: "Loyal, trusting, and full of heart." },
+      { name: "Kang Sae-Byeok", score: 10, img: "kangsaebyeok.jpg", desc: "Strong, quiet, and focused on survival." },
+      { name: "Detective Jun-Ho", score: 14, img: "junho.jpg", desc: "Intelligent, driven, and righteous." },
+      { name: "Cho Sang-Woo", score: 18, img: "choisangwoo.jpg", desc: "Strategic, ambitious, and morally grey." },
+      { name: "Oh Il-Nam", score: 22, img: "ohilnam.jpg", desc: "Wise and secretive, with hidden depths." }
     ];
 
     let sgCurrentQ = 0;
@@ -168,12 +225,12 @@
       const optionsDiv = document.getElementById("sg-options");
       optionsDiv.innerHTML = "";
 
-      answerText.forEach((text, i) => {
-        const opt = document.createElement("div");
-        opt.className = "option";
-        opt.textContent = text;
-        opt.onclick = () => {
-          sgTotalScore += q.scores[i];
+      q.options.forEach((opt) => {
+        const el = document.createElement("div");
+        el.className = "option";
+        el.textContent = opt.text;
+        el.onclick = () => {
+          sgTotalScore += opt.score;
           sgCurrentQ++;
           updateSGProgress();
           if (sgCurrentQ < sgQuestions.length) {
@@ -182,7 +239,7 @@
             showSquidResult();
           }
         };
-        optionsDiv.appendChild(opt);
+        optionsDiv.appendChild(el);
       });
     }
 
@@ -195,7 +252,6 @@
       document.getElementById("sg-quiz-screen").style.display = "none";
       document.getElementById("sg-result-screen").style.display = "block";
 
-      // Find closest match
       const match = sgCharacters.reduce((prev, curr) =>
         Math.abs(curr.score - sgTotalScore) < Math.abs(prev.score - sgTotalScore) ? curr : prev
       );
