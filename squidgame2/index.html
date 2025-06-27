@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 
 <head>
@@ -157,7 +157,9 @@
       const character = sg2Characters.find(c => sg2Score >= c.range[0] && sg2Score <= c.range[1]);
       resultBox.innerHTML = `
         <h2>You are <span style='color:#f44336;'>${character.name}</span></h2>
-        <img src="${character.img}" alt="${character.name}" style="width:80%; max-width:300px; border-radius:12px; margin:20px 0;">
+        <div style="display:flex;justify-content:center;">
+          <img src="${character.img}" alt="${character.name}" style="width:80%; max-width:450px; border-radius:12px; margin:20px 0;">
+        </div>
         <p style="font-size:16px;">${character.desc}</p>
         <button onclick="location.reload()">Try Again</button>
       `;
@@ -185,7 +187,7 @@
         }
     </script>
 
-    <!-- 사이트 전체 끝나는 곳 (</div> 바깥)에 이렇게 footer 삽입) -->
+    <!-- 사이트 전체 끝나는 곳 (</div> 바깥에 이렇게 footer 삽입) -->
     </div> <!-- 메인 콘텐츠 끝나는 div 닫기 -->
 
     <footer style="
