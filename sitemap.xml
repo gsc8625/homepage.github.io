@@ -4,6 +4,9 @@
     <loc>https://quizzment.com/</loc>
   </url>
   <url>
+    <loc>https://quizzment.com/index.html</loc>
+  </url>
+  <url>
     <loc>https://quizzment.com/princessmbti/index.html</loc>
   </url>
   <url>
@@ -14,5 +17,11 @@
   </url>
   <url>
     <loc>https://quizzment.com/fortune/index.html</loc>
+  </url>
+  <url>
+    <loc>https://quizzment.com/squidgame1/index.html</loc>
+  </url>
+  <url>
+    <loc>https://quizzment.com/squidgame2/index.html</loc>
   </url>
 </urlset>
