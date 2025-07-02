@@ -55,7 +55,7 @@
                 <h2 style="font-size: 2rem; margin-bottom: 1rem; color: #333;">MBTI Princess Test</h2>
                 <p style="margin-bottom: 2rem; color: #555;">Find out your personality type through 16 carefully crafted
                     questions!</p>
-                <div><img src="/princessmbti/mbti.png" alt="MBTI Start Image"
+                <div><img src="../princessmbti/mbti.png" alt="MBTI Start Image"
                         style="max-width: 100%; border-radius: 16px; margin-bottom: 1.5rem;"></div>
                 <button onclick="startTest()"
                     style="padding: 12px 24px; font-size: 1rem; background-color: #da89e6; color: white; border: none; border-radius: 8px; cursor: pointer;">Start
@@ -164,7 +164,7 @@
             document.getElementById('progress-bar').style.display = 'none';
             const resultType = `${responses.E >= responses.I ? 'E' : 'I'}${responses.S >= responses.N ? 'S' : 'N'}${responses.T >= responses.F ? 'T' : 'F'}${responses.J >= responses.P ? 'J' : 'P'}`;
             document.getElementById('result-type').innerText = resultType;
-            document.getElementById('result-image').src = `/princessmbti/${resultType.toLowerCase()}.jpg`;
+            document.getElementById('result-image').src = `../princessmbti/${resultType.toLowerCase()}.jpg`;
             document.getElementById('result-screen').style.display = 'block';
         }
 

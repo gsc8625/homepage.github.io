@@ -167,7 +167,7 @@
     <h1>Teto-Egen Personality Test</h1>
 
     <div id="start-screen">
-      <img src="teto-egen.webp" alt="Teto Egen" />
+      <img src="../tetoegen/teto-egen.webp" alt="Teto Egen" />
       <p style="text-align:center; margin-bottom: 20px;">Select your gender to begin the test.</p>
       <div class="gender-select">
         <button id="btn-male">Male</button>
@@ -408,7 +408,7 @@
         resultDescription.textContent = tier.description;
 
         // Set image filename based on tier title, remove spaces and special chars for safety
-        const imgFileName = "images/" + tier.title.replace(/[^a-zA-Z0-9]/g, "") + ".jpg";
+        const imgFileName = "../tetoegen/images/" + tier.title.replace(/[^a-zA-Z0-9]/g, "") + ".jpg";
         resultImage.src = imgFileName;
         resultImage.alt = tier.title;
         resultImage.style.display = "block";

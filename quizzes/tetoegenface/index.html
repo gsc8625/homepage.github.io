@@ -573,7 +573,7 @@
 
 
     <div class="img">
-        <img class="up mt-3 pb-5" src="tetoegenface.png" alt="main image">
+        <img class="up mt-3 pb-5" src="../tetoegenface/tetoegenface.png" alt="main image">
     </div>
 
     <h3 class="sbtitle""d-flex justify-content-center">Select Gender</h3>
@@ -735,11 +735,11 @@
             if (document.getElementById("gender").checked) {
                 switch (prediction[0].className) {
                     case "1a":
-                        resultTitle = '<img src="tetoguy.png">';
+                        resultTitle = '<img src="../tetoegenface/tetoguy.png">';
 
                         break;
                     case "2a":
-                        resultTitle = '<img src="egenguy.png">';
+                        resultTitle = '<img src="../tetoegenface/egenguy.png">';
 
                         break;
 
@@ -749,11 +749,11 @@
             } else {
                 switch (prediction[0].className) {
                     case "1a":
-                        resultTitle = '<img src="tetogirl.png">';
+                        resultTitle = '<img src="../tetoegenface/tetogirl.png">';
 
                         break;
                     case "2a":
-                        resultTitle = '<img src="egengirl.png">';
+                        resultTitle = '<img src="../tetoegenface/egengirl.png">';
 
                         break;
 
