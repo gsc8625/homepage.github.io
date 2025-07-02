@@ -5,3 +5,58 @@
 </nav>
 
 
+ <!-- 아이콘 요소 -->
+  <button id="kakao-channel-icon" onclick="navigateToKakaoChannel()">
+    <img src="https://quizzment.com/discord-icon.png" alt="Kakao Channel Icon">
+  </button>
+
+  <script>
+    // 아이콘 클릭 시 채널로 이동하는 함수
+    function navigateToKakaoChannel() {
+      // 카카오톡 채널 URL  
+      var kakaoChannelUrl = "http://kakaotalk.com";
+
+      // 현재 창에서 카카오톡 채널로 이동
+      window.open(kakaoChannelUrl, "_blank");
+    }
+  </script>
+
+  <!-- 사이트 전체 끝나는 곳 (</div> 바깥)에 이렇게 footer 삽입) -->
+</div> <!-- 메인 콘텐츠 끝나는 div 닫기 -->
+
+<footer style="
+  width: 100vw;
+  background-color: #ffffff;
+  padding: 10px 10px;
+  text-align: center;
+  font-size: 13px;
+  color: #333;
+  box-sizing: border-box;
+">
+  <p style="margin: 4px 0;">Advertisement Request - sc62070@gmail.com</p>
+  <p style="margin: 4px 0;">&copy; Quizzment 2025. All Rights Reserved.</p>
+
+  <button onclick="toggleBusinessInfo()" style="
+    background: none;
+    border: none;
+    color: #808080;
+    font-size: 13px;
+    cursor: pointer;
+    margin: 10px 0;
+    text-decoration: none;
+  ">
+    Company Information
+  </button>
+
+  <div id="businessInfo" style="display: none; color: #666; font-size: 12px; line-height: 1.6; margin-top: 10px;">
+    <p style="margin: 4px 0;">Company Name : Quizzment | CEO : Steve Choi</p>
+  </div>
+</footer>
+
+<script>
+  function toggleBusinessInfo() {
+    const info = document.getElementById('businessInfo');
+    info.style.display = (info.style.display === 'none' || info.style.display === '') ? 'block' : 'none';
+  }
+</script>
+</div>
