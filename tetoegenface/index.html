@@ -564,17 +564,16 @@
 
 
     <section class="section">
-
-        <h2 class="sr-only">테스트잇 테토 에겐 구분 테스트</h2>
-        <h3 class="sr-only">인공지능으로 파악한 나의 테토 에겐 얼굴 테스트</h3>
-        <h4 class="sr-only">본 서비스는 Google의 인공지능 teachable machine 2.0을 활용하였습니다.</h4>
-        <p class="sr-only">테스트잇 테토 에겐 얼굴 테스트</p>
+        <h2 class="sr-only">Quizzment Teto Egen Classification Test</h2>
+        <h3 class="sr-only">My Teto Egen Face Test Analyzed by AI</h3>
+        <h4 class="sr-only">This service uses Google's Teachable Machine 2.0 AI.</h4>
+        <p class="sr-only">Quizzment Teto Egen Face Test</p>
     </section>
 
 
 
     <div class="img">
-        <img class="up mt-3 pb-5" src="img_main298.png" alt="up">
+        <img class="up mt-3 pb-5" src="tetoegenface.png" alt="main image">
     </div>
 
     <h3 class="sbtitle""d-flex justify-content-center">Select Gender</h3>
@@ -630,7 +629,7 @@
         </div>
     </div>
 
-<footer style="
+    <footer style="
   width: 100vw;
   background-color: #ffffff;
   padding: 10px 10px;
@@ -639,10 +638,10 @@
   color: #333;
   box-sizing: border-box;
 ">
-  <p style="margin: 4px 0;">Advertisement Request - sc62070@gmail.com</p>
-  <p style="margin: 4px 0;">&copy; Quizzment 2025. All Rights Reserved.</p>
+        <p style="margin: 4px 0;">Advertisement Request - sc62070@gmail.com</p>
+        <p style="margin: 4px 0;">&copy; Quizzment 2025. All Rights Reserved.</p>
 
-  <button onclick="toggleBusinessInfo()" style="
+        <button onclick="toggleBusinessInfo()" style="
     background: none;
     border: none;
     color: #808080;
@@ -651,193 +650,192 @@
     margin: 10px 0;
     text-decoration: none;
   ">
-    Company Information
-  </button>
+            Company Information
+        </button>
 
-  <div id="businessInfo" style="display: none; color: #666; font-size: 12px; line-height: 1.6; margin-top: 10px;">
-    <p style="margin: 4px 0;">Company Name : Quizzment | CEO : Steve Choi</p>
-  </div>
-</footer>
+        <div id="businessInfo" style="display: none; color: #666; font-size: 12px; line-height: 1.6; margin-top: 10px;">
+            <p style="margin: 4px 0;">Company Name : Quizzment | CEO : Steve Choi</p>
+        </div>
+    </footer>
 
-<script>
-  function toggleBusinessInfo() {
-    const info = document.getElementById('businessInfo');
-    info.style.display = (info.style.display === 'none' || info.style.display === '') ? 'block' : 'none';
-  }
-</script>
-</div>
+    <script>
+        function toggleBusinessInfo() {
+            const info = document.getElementById('businessInfo');
+            info.style.display = (info.style.display === 'none' || info.style.display === '') ? 'block' : 'none';
+        }
+    </script>
+    </div>
 
 
-        <script>
-            function readURL(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        $('.image-upload-wrap').hide();
-                        $('.img').hide();
-                        $('#loading').show();
-                        $('.file-upload-image').attr('src', e.target.result);
-                        $('.file-upload-content').show();
-                        $('.image-title').html(input.files[0].name);
-                    };
-                    reader.readAsDataURL(input.files[0]);
-                    init().then(function () {
-                        console.log("hello");
-                        predict();
-                        $('#loading').hide();
-                    });
-                } else {
-                    removeUpload();
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('.image-upload-wrap').hide();
+                    $('.img').hide();
+                    $('#loading').show();
+                    $('.file-upload-image').attr('src', e.target.result);
+                    $('.file-upload-content').show();
+                    $('.image-title').html(input.files[0].name);
+                };
+                reader.readAsDataURL(input.files[0]);
+                init().then(function () {
+                    console.log("hello");
+                    predict();
+                    $('#loading').hide();
+                });
+            } else {
+                removeUpload();
+            }
+        }
+
+        function removeUpload() {
+            $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+            $('.file-upload-content').hide();
+            $('.image-upload-wrap').show();
+        }
+        $('.image-upload-wrap').bind('dragover', function () {
+            $('.image-upload-wrap').addClass('image-dropping');
+        });
+        $('.image-upload-wrap').bind('dragleave', function () {
+            $('.image-upload-wrap').removeClass('image-dropping');
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+    <script type="text/javascript">
+        let URL;
+        const urlMale = "https://teachablemachine.withgoogle.com/models/G707l6wef/";
+        const urlFemale = "https://teachablemachine.withgoogle.com/models/sWCj38eKe/";
+        let model, webcam, labelContainer, maxPredictions;
+        async function init() {
+            if (document.getElementById("gender").checked) {
+                URL = urlMale;
+            } else {
+                URL = urlFemale;
+            }
+            const modelURL = URL + "model.json";
+            const metadataURL = URL + "metadata.json";
+            model = await tmImage.load(modelURL, metadataURL);
+            maxPredictions = model.getTotalClasses();
+            labelContainer = document.getElementById("label-container");
+            for (let i = 0; i < maxPredictions; i++) {
+                var element = document.createElement("div")
+                element.classList.add("d-flex");
+                labelContainer.appendChild(element);
+            }
+        }
+        async function predict() {
+            var image = document.getElementById("face-image")
+            const prediction = await model.predict(image, false);
+            prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
+            console.log(prediction[0].className);
+            var resultTitle;
+            if (document.getElementById("gender").checked) {
+                switch (prediction[0].className) {
+                    case "1a":
+                        resultTitle = '<img src="tetoguy.png">';
+
+                        break;
+                    case "2a":
+                        resultTitle = '<img src="egenguy.png">';
+
+                        break;
+
+                    default:
+
+                }
+            } else {
+                switch (prediction[0].className) {
+                    case "1a":
+                        resultTitle = '<img src="tetogirl.png">';
+
+                        break;
+                    case "2a":
+                        resultTitle = '<img src="egengirl.png">';
+
+                        break;
+
+
+                    default:
+
                 }
             }
+            var title = "<div class='" + prediction[0].className + "-gg-title'>" + resultTitle + "</div>"
 
-            function removeUpload() {
-                $('.file-upload-input').replaceWith($('.file-upload-input').clone());
-                $('.file-upload-content').hide();
-                $('.image-upload-wrap').show();
-            }
-            $('.image-upload-wrap').bind('dragover', function () {
-                $('.image-upload-wrap').addClass('image-dropping');
-            });
-            $('.image-upload-wrap').bind('dragleave', function () {
-                $('.image-upload-wrap').removeClass('image-dropping');
-            });
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
-        <script
-            src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
-        <script type="text/javascript">
-            let URL;
-            const urlMale = "https://teachablemachine.withgoogle.com/models/G707l6wef/";
-            const urlFemale = "https://teachablemachine.withgoogle.com/models/sWCj38eKe/";
-            let model, webcam, labelContainer, maxPredictions;
-            async function init() {
-                if (document.getElementById("gender").checked) {
-                    URL = urlMale;
+            $('.result-message').html(title);
+            var barWidth;
+            for (let i = 0; i < maxPredictions; i++) {
+                if (prediction[i].probability.toFixed(2) > 0.1) {
+                    barWidth = Math.round(prediction[i].probability.toFixed(2) * 100) + "%";
+                } else if (prediction[i].probability.toFixed(2) >= 0.01) {
+                    barWidth = "4%"
                 } else {
-                    URL = urlFemale;
+                    barWidth = "2%"
                 }
-                const modelURL = URL + "model.json";
-                const metadataURL = URL + "metadata.json";
-                model = await tmImage.load(modelURL, metadataURL);
-                maxPredictions = model.getTotalClasses();
-                labelContainer = document.getElementById("label-container");
-                for (let i = 0; i < maxPredictions; i++) {
-                    var element = document.createElement("div")
-                    element.classList.add("d-flex");
-                    labelContainer.appendChild(element);
+                var labelTitle;
+                switch (prediction[i].className) {
+
+
+
+
+                    default:
+                        labelTitle = "알수없음"
+                }
+                var label = "<div class='gg-label d-flex align-items-center'>" + labelTitle + "</div>"
+
+                labelContainer.childNodes[i].innerHTML = label + bar;
+            }
+        }
+    </script>
+    <script>
+        function iosApp() {
+            document.getElementById("coupang").style.display = "none";
+            $("#coupang ins").hide();
+            document.getElementById("addThis").style.display = "none";
+            document.getElementById("disqus_thread").style.display = "none";
+            var kakao = document.getElementsByClassName("kakao_ad_area");
+            for (var i = 0; i < kakao.length; i++) {
+                if (kakao[i]) {
+                    kakao[i].style.display = "none";
                 }
             }
-            async function predict() {
-                var image = document.getElementById("face-image")
-                const prediction = await model.predict(image, false);
-                prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
-                console.log(prediction[0].className);
-                var resultTitle;
-                if (document.getElementById("gender").checked) {
-                    switch (prediction[0].className) {
-                        case "1a":
-                            resultTitle = '<img src="fn298_1a.png">';
+            document.getElementById("yotube-top-link").style.display = "none";
+            document.getElementById("yotube-mid-link").style.display = "none";
+            document.getElementById("yotube-bottom-link").style.display = "none";
+        }
 
-                            break;
-                        case "2a":
-                            resultTitle = '<img src="fn298_2a.png">';
+        document.addEventListener("DOMContentLoaded", function () {
+            const shareButton = document.getElementById("share-btn"); // 공유 버튼 선택
+            if (shareButton) {
+                shareButton.addEventListener("click", function () {
+                    const testURL = "https://quizzment.com/tetoegenface/"; // 공유할 테스트 주소
+                    const shareText = "Test if you are Teto or Egen❣️"; // 공유 텍스트
 
-                            break;
-
-                        default:
-
-                    }
-                } else {
-                    switch (prediction[0].className) {
-                        case "1a":
-                            resultTitle = '<img src="fy298_1a.png">';
-
-                            break;
-                        case "2a":
-                            resultTitle = '<img src="fy298_2a.png">';
-
-                            break;
-
-
-                        default:
-
-                    }
-                }
-                var title = "<div class='" + prediction[0].className + "-gg-title'>" + resultTitle + "</div>"
-
-                $('.result-message').html(title);
-                var barWidth;
-                for (let i = 0; i < maxPredictions; i++) {
-                    if (prediction[i].probability.toFixed(2) > 0.1) {
-                        barWidth = Math.round(prediction[i].probability.toFixed(2) * 100) + "%";
-                    } else if (prediction[i].probability.toFixed(2) >= 0.01) {
-                        barWidth = "4%"
+                    if (navigator.share) {
+                        // 모바일 또는 지원 브라우저
+                        navigator.share({
+                            title: "Teto-Egen Face Test - Quizzment",
+                            text: shareText,
+                            url: testURL
+                        }).then(() => {
+                            console.log("✅ Share Success!");
+                        }).catch((error) => {
+                            console.error("❌ Share failed:", error);
+                        });
                     } else {
-                        barWidth = "2%"
+                        // PC 등 공유 API 미지원 브라우저
+                        navigator.clipboard.writeText(`${shareText} ${testURL}`).then(() => {
+                            alert("📌 Link copied! Share it with your friends.");
+                        }).catch((err) => {
+                            console.error("❌ Clipboard copy failed:", err);
+                        });
                     }
-                    var labelTitle;
-                    switch (prediction[i].className) {
-
-
-
-
-                        default:
-                            labelTitle = "알수없음"
-                    }
-                    var label = "<div class='gg-label d-flex align-items-center'>" + labelTitle + "</div>"
-
-                    labelContainer.childNodes[i].innerHTML = label + bar;
-                }
+                });
             }
-        </script>
-        <script>
-            function iosApp() {
-                document.getElementById("coupang").style.display = "none";
-                $("#coupang ins").hide();
-                document.getElementById("addThis").style.display = "none";
-                document.getElementById("disqus_thread").style.display = "none";
-                var kakao = document.getElementsByClassName("kakao_ad_area");
-                for (var i = 0; i < kakao.length; i++) {
-                    if (kakao[i]) {
-                        kakao[i].style.display = "none";
-                    }
-                }
-                document.getElementById("yotube-top-link").style.display = "none";
-                document.getElementById("yotube-mid-link").style.display = "none";
-                document.getElementById("yotube-bottom-link").style.display = "none";
-            }
-
-            document.addEventListener("DOMContentLoaded", function () {
-                const shareButton = document.getElementById("share-btn"); // 공유 버튼 선택
-                if (shareButton) {
-                    shareButton.addEventListener("click", function () {
-                        const testURL = "https://quizzment.com/tetoegenface/"; // 공유할 테스트 주소
-                        const shareText = "Test if you are Teto or Egen❣️"; // 공유 텍스트
-
-                        if (navigator.share) {
-                            // 모바일 또는 지원 브라우저
-                            navigator.share({
-                                title: "Teto-Egen Face Test - Quizzment",
-                                text: shareText,
-                                url: testURL
-                            }).then(() => {
-                                console.log("✅ Share Success!");
-                            }).catch((error) => {
-                                console.error("❌ Share failed:", error);
-                            });
-                        } else {
-                            // PC 등 공유 API 미지원 브라우저
-                            navigator.clipboard.writeText(`${shareText} ${testURL}`).then(() => {
-                                alert("📌 Link copied! Share it with your friends.");
-                            }).catch((err) => {
-                                console.error("❌ Clipboard copy failed:", err);
-                            });
-                        }
-                    });
-                }
-            });
-        </script>
+        });
+    </script>
 </body>
 
 </html>
