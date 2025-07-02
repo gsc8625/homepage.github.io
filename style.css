@@ -85,13 +85,13 @@ img {
 /* 아이콘 스타일 */
 #kakao-channel-icon {
     position: fixed;
-    right: 20px;
-    bottom: 20px;
+    right: 1px;
+    bottom: 1px;
     z-index: 9999;
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
     text-align: center;
-    line-height: 50px;
+    line-height: 10px;
     color: #FFFFFF;
     font-size: 24px;
     cursor: pointer;
@@ -104,20 +104,6 @@ img {
     background-color: transparent;
 }
 
-.kakao_ad {
-    width: 320px;
-    margin: 0 auto;
-}
-
-.kakao_ad2 {
-    width: 320px;
-    margin: 0 auto;
-}
-
-.coupang_ad {
-    width: 320px;
-    margin: 0 auto;
-}
 
 footer {
     text-align: center;
