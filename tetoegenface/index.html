@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Quizzment</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3187370930413699"
+        crossorigin="anonymous"></script>
+    <meta name="description"
+        content="Website full of fun tests such as the MBTI test, personality test, love test, and facial recognition test.">
+    <meta name="keywords"
+        content="Tests, psychological tests, profile tests, personality tests, MBTI, various tests, boredom-killing tests, love tests, romance tests, radio love test, The Glory quiz, The Glory Season 2 test, old-school person test, newspaper personality test, weakness test, strength test, fortune test, Quizzment, test it, Christmas test, MBTI test, MBTI, MBTI test, color MBTI, radio love test, radio test, rolling paper test, rolling paper MBTI.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Quizzment">
+    <meta property="og:description"
+        content="This is a website full of fun tests such as the MBTI test, personality test, and facial recognition test.">
+    <meta property="og:image" content="https://quizzment.com/featuredimage.png">
+    <meta property="og:url" content="https://quizzment.com/">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="google-site-verification" content="DMg8QOrWVNM-tnh8rDjHIwFj0Ie_BsIiJkNmT_iHJrk" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://quizzment.com/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://quizzment.com/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+
+</head>
+
+
+<style>
+    @font-face {
+        font-family: 'ChosunGu';
+        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+
+    .logo {
+        width: 100px;
+        margin-top: 14px;
+    }
+
+    .main-nav {
+        display: flex;
+        font-size: 1.25rem;
+        text-transform: uppercase;
+        margin-top: 34px;
+        list-style: none;
+    }
+
+    .main-nav li {
+        margin-left: 36px;
+        font-family: 'Do Hyeon', sans-serif;
+        font-weight: 400;
+        /* 추가: 글씨 얇게 */
+        line-height: 1.7;
+        color: #432;
+    }
+
+    .main-nav a {
+        color: #432;
+        font-family: 'Do Hyeon', sans-serif;
+        font-weight: 400;
+        /* 추가: 글씨 얇게 */
+        line-height: 1.7;
+    }
+
+    .main-nav a:hover {
+        color: #0bd;
+    }
+
+
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+    .wrapper {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 4%;
+    }
+
+
+    body {
+        font-family: 'ChosunGu', sans-serif;
+        background-color: #ffffff;
+        box-sizing: border-box;
+        color: #363636;
+        font-weight: bold;
+    }
+
+    .file-upload {
+        padding: 3% 3%;
+        margin: 0 auto;
+        border-radius: 10px;
+        border: solid 1.5px #ffffff;
+        background-color: #ffffff;
+
+    }
+
+    .img {
+        margin: 0 auto;
+        text-align: center;
+
+    }
+
+    .img img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        /* 이미지를 수평 가운데 정렬 */
+    }
+
+    .file-upload-btn {
+        width: 100%;
+        margin: 0;
+        color: #fff;
+        background: #F2E7FA;
+        border: none;
+        padding: 10px;
+        border-radius: 4px;
+        border-bottom: 4px solid #15824B;
+        transition: all .2s ease;
+        outline: none;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+
+    .file-upload-btn:hover {
+        background: #1AA059;
+        color: #ffffff;
+        transition: all .2s ease;
+        cursor: pointer;
+    }
+
+    .file-upload-btn:active {
+        border: 0;
+        transition: all .2s ease;
+    }
+
+    .file-upload-content {
+        display: none;
+        text-align: center;
+    }
+
+    #loading {
+        display: none;
+    }
+
+    .file-upload-input {
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        outline: none;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .custom-loading {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 200px;
+    }
+
+    /* 아이콘을 가로로 나란히 정렬 */
+    .bouncing-wrap {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        gap: 20px;
+    }
+
+    /* 아이콘이 줄바꿈 안되도록 inline-block + 애니메이션 */
+    .bouncing-icon {
+        font-size: 3rem;
+        display: inline-block;
+        /* ✅ 줄바꿈 방지 */
+        animation: bounce 1s infinite;
+    }
+
+    /* 하트만 살짝 딜레이 */
+    .bouncing-icon.delay {
+        animation-delay: 0.5s;
+    }
+
+    /* 통통 튀는 애니메이션 */
+    @keyframes bounce {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-20px);
+        }
+    }
+
+
+
+
+    .image-upload-wrap {
+        width: 65%;
+        height: 70%;
+        margin: 0 auto;
+        position: relative;
+        object-fit: contain;
+        border-radius: 5px;
+        border: dashed 1.5px #ffffff;
+        background-color: #fbd8ff;
+
+    }
+
+    .image-dropping,
+    .image-upload-wrap:hover {
+        background-color: #fbd8ff;
+        border: 1.5px dashed #ffffff;
+    }
+
+    .image-title-wrap {
+        padding: 0 15px 15px 15px;
+        color: #298;
+    }
+
+    .drag-text {
+        text-align: center;
+    }
+
+    .drag-text h3 {
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+
+
+    .file-upload-image {
+        max-height: 50%;
+        max-width: 50%;
+        margin: auto;
+        padding: 10px;
+    }
+
+    .try-again-btn {
+        border-radius: 40px;
+        border: solid 1.5px #ffd8f8;
+        background-color: #ffd8f8;
+    }
+
+    .try-again-text {
+        display: block;
+        font-size: 1.5rem;
+        text-align: center;
+        color: #000000;
+        padding: 4px 15px;
+    }
+
+    .remove-image:hover {
+        background: #c13b2a;
+        color: #ffffff;
+        transition: all .2s ease;
+        cursor: pointer;
+    }
+
+    .remove-image:active {
+        border: 0;
+        transition: all .2s ease;
+    }
+
+    .section {
+        margin-top: 50px;
+    }
+
+    .title {
+        line-height: 1.67;
+        text-align: center;
+        color: #363636;
+        font-size: 25px;
+    }
+
+    .subtitle {
+        line-height: 1.53;
+        text-align: center;
+        color: #363636;
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    .sbtitle {
+        line-height: 1.53;
+        text-align: center;
+        color: #363636;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .result-message img,
+    .result-title img {
+        max-width: 60%;
+        /* 화면에 맞게 이미지 크기 조정 */
+        height: auto;
+    }
+
+    /* 결과 이미지 부모 요소 스타일 추가 */
+    .result-title {
+        text-align: center;
+        max-width: 80%;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+    .result-title img {
+        max-width: 80%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        max-height: 100%;
+    }
+
+
+    .custom-button {
+        min-width: 180px;
+        /* 최소 너비 */
+        height: 60px;
+        /* 높이 고정 */
+        padding: 15px 40px;
+        /* 안쪽 여백 조정 */
+        background: linear-gradient(135deg, #ffd8f8, #ffd8f8);
+        border: none;
+        padding: 15px 30px;
+        border-radius: 50px;
+        /* 완전 동글동글 */
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: white;
+        box-shadow: 0px 4px 8px rgba(255, 94, 174, 0.4);
+        transition: all 0.2s ease-in-out;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .custom-button::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 10%, transparent 80%);
+        transition: all 0.3s ease-out;
+    }
+
+    .custom-button:hover {
+        background: linear-gradient(135deg, #ffd8f8, #ffd8f8);
+        transform: scale(1.1);
+        box-shadow: 0px 6px 12px rgba(255, 94, 174, 0.5);
+    }
+
+    .custom-button:active {
+        transform: scale(0.95);
+    }
+
+    /* On screens that are 600px or less, set the background color to olive */
+    @media screen and (max-width: 600px) {
+        html {
+            font-size: 10px;
+        }
+
+        .navbar-brand {
+            font-size: 2rem;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+
+        .result-title img,
+        .result-message img {
+            max-width: 100%;
+            /* 이미지를 부모 요소에 맞게 조정 */
+            width: 100%;
+            /* 화면 너비에 맞게 이미지 크기 조정 */
+            height: auto;
+        }
+    }
+
+    .upload {
+        width: 20%;
+    }
+
+    .upload-text {
+        width: 58%;
+        font-size: 1.1rem;
+        /* ✅ 줄인 크기 */
+        line-height: 1.4;
+        /* ✅ 줄간격도 살짝 줄임 */
+        text-align: center;
+        color: #35465d;
+        margin: 0 auto;
+    }
+
+    .footer {
+        background-color: initial;
+        color: initial;
+    }
+
+    .bar-container {
+        height: 2.7rem;
+    }
+
+
+    .percent-text {
+        font-size: 1rem;
+        color: #ffffff;
+    }
+
+    .gg-label {
+        width: 20%;
+        text-align: left;
+        height: 2rem;
+    }
+
+    #label-container {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+
+
+
+    /* gender */
+    input#gender {
+        display: none;
+    }
+
+    label {
+        cursor: pointer;
+        display: inline-block;
+        width: 90px;
+        height: 41px;
+        box-shadow: 0 0 0 8px #e5e9ea inset;
+        border-radius: 30px;
+        position: relative;
+    }
+
+    .knob {
+        position: absolute;
+        width: 41px;
+        top: 0;
+        left: 0;
+        height: 41px;
+        border-radius: 50%;
+        box-shadow: 0 0 0 8px #ffc8c8 inset;
+        background-color: #ffffff;
+        transition: 0.3s;
+    }
+
+    .knob>i {
+        position: absolute;
+        width: 4px;
+        height: 18px;
+        top: 100%;
+        background-color: #ffc8c8;
+        left: calc(50% - 2px);
+    }
+
+    .knob>i:before,
+    .knob>i:after {
+        width: 6px;
+        position: absolute;
+        top: 42%;
+        content: "";
+        height: 4px;
+        background-color: #ffc8c8;
+    }
+
+    .knob>i:before {
+        left: 4px;
+    }
+
+    .knob>i:after {
+        left: -6px;
+    }
+
+    input:checked+label>.knob {
+        box-shadow: 0 0 0 8px #a1c6dd inset;
+        background-color: #e2ecf4;
+        transform: translateX(49px) rotate(-140deg);
+    }
+
+    input:checked+label>.knob>i {
+        background-color: #a1c6dd;
+    }
+
+    input:checked+label>.knob>i:after,
+    input:checked+label>.knob>i:before {
+        background-color: #a1c6dd;
+    }
+
+    input:checked+label>.knob>i:after {
+        top: 14.5px;
+        width: 12px;
+        left: -7px;
+        transform: rotate(45deg);
+    }
+
+    input:checked+label>.knob>i:before {
+        top: 13px;
+        width: 12px;
+        left: 0px;
+        transform: rotate(134deg);
+    }
+
+    .ad-banner {
+        width: 320px;
+        margin: 0 auto;
+    }
+
+
+    .coupang_ad {
+        display: block;
+        width: 350px;
+        /* 광고 크기에 맞게 설정 */
+        margin: 0 auto;
+        text-align: center;
+    }
+</style>
+
+
+
+<body>
+    <header class="page-header wrapper">
+        <h1 class="site-title">
+            <a href="https://quizzment.com/"><img class="logo" src="https://quizzment.com/img_logo.png"
+                    alt="Quizzment"></a>
+        </h1>
+
+
+
+
+        <div id="menu-container"></div>
+        <script>
+            fetch('https://quizzment.com/menu.html')
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById('menu-container').innerHTML = html;
+                });
+        </script>
+    </header>
+
+
+    <section class="section">
+    </section>
+
+
+
+
+    <section class="section">
+
+        <h2 class="sr-only">테스트잇 테토 에겐 구분 테스트</h2>
+        <h3 class="sr-only">인공지능으로 파악한 나의 테토 에겐 얼굴 테스트</h3>
+        <h4 class="sr-only">본 서비스는 Google의 인공지능 teachable machine 2.0을 활용하였습니다.</h4>
+        <p class="sr-only">테스트잇 테토 에겐 얼굴 테스트</p>
+    </section>
+
+
+
+    <div class="img">
+        <img class="up mt-3 pb-5" src="img_main298.png" alt="up">
+    </div>
+
+    <h3 class="sbtitle""d-flex justify-content-center">Select Gender</h3>
+    <section class="d-flex justify-content-center">
+        <p class="d-flex align-items-center pr-3">Female</p>
+        <div>
+            <input type="checkbox" id="gender">
+            <label for="gender">
+                <span class="knob">
+                    <i></i>
+                </span>
+            </label>
+        </div>
+        <p class="d-flex align-items-center pl-3">Male</p>
+    </section>
+
+    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <div class="mt-3 container file-upload">
+        <div class="image-upload-wrap">
+            <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+            <div class="drag-text">
+                <h3 class="mb-5 pb-4 pt-5  upload-text">Upload a photo or<br>click to upload a file</h3>
+            </div>
+        </div>
+        <div class="file-upload-content">
+            <img class="file-upload-image" id="face-image" src="#" alt="your image" />
+            <div id="loading" class="custom-loading">
+                <div class="bouncing-icon">👀</div>
+                <div class="bouncing-icon delay">✨</div>
+                <p class="text-center mt-3">Analyzing Teto Egen...</p>
+            </div>
+            <p class="result-message"></p>
+            <div id="label-container" class="d-flex flex-column justify-content-around"></div>
+            <!-- Go to www.addthis.com/dashboard to customize your tools -->
+            <div class="addthis_inline_share_toolbox_bzap"></div>
+
+
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <!-- 다시해보기 버튼에 클래스 추가 -->
+                <button type="button" class="btn btn-info mt-3 custom-button"
+                    onclick="location.href='https://quizzment.com/tetoegenface'"
+                    style="font-size:large;  color: black;background-color: rgb(255, 252, 214); border-radius: 0px; border-width: 1px; font-weight: bold; border-radius: 50px; border-color: rgb(0, 0, 0);">Try
+                    Again</button>
+
+                <!-- 테스트 공유하기 버튼 추가 -->
+                <button id="share-btn" type="button" class="btn btn-info mt-3 custom-button"
+                    style="font-size:large; color: black; background-color: rgb(255, 252, 214); border-radius: 0px; border-width: 1px; font-weight: bold; border-radius: 50px; border-color: rgb(0, 0, 0);">
+                    Share Test
+                </button>
+
+
+            </div>
+        </div>
+    </div>
+
+<footer style="
+  width: 100vw;
+  background-color: #ffffff;
+  padding: 10px 10px;
+  text-align: center;
+  font-size: 13px;
+  color: #333;
+  box-sizing: border-box;
+">
+  <p style="margin: 4px 0;">Advertisement Request - sc62070@gmail.com</p>
+  <p style="margin: 4px 0;">&copy; Quizzment 2025. All Rights Reserved.</p>
+
+  <button onclick="toggleBusinessInfo()" style="
+    background: none;
+    border: none;
+    color: #808080;
+    font-size: 13px;
+    cursor: pointer;
+    margin: 10px 0;
+    text-decoration: none;
+  ">
+    Company Information
+  </button>
+
+  <div id="businessInfo" style="display: none; color: #666; font-size: 12px; line-height: 1.6; margin-top: 10px;">
+    <p style="margin: 4px 0;">Company Name : Quizzment | CEO : Steve Choi</p>
+  </div>
+</footer>
+
+<script>
+  function toggleBusinessInfo() {
+    const info = document.getElementById('businessInfo');
+    info.style.display = (info.style.display === 'none' || info.style.display === '') ? 'block' : 'none';
+  }
+</script>
+</div>
+
+
+        <script>
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('.image-upload-wrap').hide();
+                        $('.img').hide();
+                        $('#loading').show();
+                        $('.file-upload-image').attr('src', e.target.result);
+                        $('.file-upload-content').show();
+                        $('.image-title').html(input.files[0].name);
+                    };
+                    reader.readAsDataURL(input.files[0]);
+                    init().then(function () {
+                        console.log("hello");
+                        predict();
+                        $('#loading').hide();
+                    });
+                } else {
+                    removeUpload();
+                }
+            }
+
+            function removeUpload() {
+                $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+                $('.file-upload-content').hide();
+                $('.image-upload-wrap').show();
+            }
+            $('.image-upload-wrap').bind('dragover', function () {
+                $('.image-upload-wrap').addClass('image-dropping');
+            });
+            $('.image-upload-wrap').bind('dragleave', function () {
+                $('.image-upload-wrap').removeClass('image-dropping');
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+        <script type="text/javascript">
+            let URL;
+            const urlMale = "https://teachablemachine.withgoogle.com/models/G707l6wef/";
+            const urlFemale = "https://teachablemachine.withgoogle.com/models/sWCj38eKe/";
+            let model, webcam, labelContainer, maxPredictions;
+            async function init() {
+                if (document.getElementById("gender").checked) {
+                    URL = urlMale;
+                } else {
+                    URL = urlFemale;
+                }
+                const modelURL = URL + "model.json";
+                const metadataURL = URL + "metadata.json";
+                model = await tmImage.load(modelURL, metadataURL);
+                maxPredictions = model.getTotalClasses();
+                labelContainer = document.getElementById("label-container");
+                for (let i = 0; i < maxPredictions; i++) {
+                    var element = document.createElement("div")
+                    element.classList.add("d-flex");
+                    labelContainer.appendChild(element);
+                }
+            }
+            async function predict() {
+                var image = document.getElementById("face-image")
+                const prediction = await model.predict(image, false);
+                prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
+                console.log(prediction[0].className);
+                var resultTitle;
+                if (document.getElementById("gender").checked) {
+                    switch (prediction[0].className) {
+                        case "1a":
+                            resultTitle = '<img src="fn298_1a.png">';
+
+                            break;
+                        case "2a":
+                            resultTitle = '<img src="fn298_2a.png">';
+
+                            break;
+
+                        default:
+
+                    }
+                } else {
+                    switch (prediction[0].className) {
+                        case "1a":
+                            resultTitle = '<img src="fy298_1a.png">';
+
+                            break;
+                        case "2a":
+                            resultTitle = '<img src="fy298_2a.png">';
+
+                            break;
+
+
+                        default:
+
+                    }
+                }
+                var title = "<div class='" + prediction[0].className + "-gg-title'>" + resultTitle + "</div>"
+
+                $('.result-message').html(title);
+                var barWidth;
+                for (let i = 0; i < maxPredictions; i++) {
+                    if (prediction[i].probability.toFixed(2) > 0.1) {
+                        barWidth = Math.round(prediction[i].probability.toFixed(2) * 100) + "%";
+                    } else if (prediction[i].probability.toFixed(2) >= 0.01) {
+                        barWidth = "4%"
+                    } else {
+                        barWidth = "2%"
+                    }
+                    var labelTitle;
+                    switch (prediction[i].className) {
+
+
+
+
+                        default:
+                            labelTitle = "알수없음"
+                    }
+                    var label = "<div class='gg-label d-flex align-items-center'>" + labelTitle + "</div>"
+
+                    labelContainer.childNodes[i].innerHTML = label + bar;
+                }
+            }
+        </script>
+        <script>
+            function iosApp() {
+                document.getElementById("coupang").style.display = "none";
+                $("#coupang ins").hide();
+                document.getElementById("addThis").style.display = "none";
+                document.getElementById("disqus_thread").style.display = "none";
+                var kakao = document.getElementsByClassName("kakao_ad_area");
+                for (var i = 0; i < kakao.length; i++) {
+                    if (kakao[i]) {
+                        kakao[i].style.display = "none";
+                    }
+                }
+                document.getElementById("yotube-top-link").style.display = "none";
+                document.getElementById("yotube-mid-link").style.display = "none";
+                document.getElementById("yotube-bottom-link").style.display = "none";
+            }
+
+            document.addEventListener("DOMContentLoaded", function () {
+                const shareButton = document.getElementById("share-btn"); // 공유 버튼 선택
+                if (shareButton) {
+                    shareButton.addEventListener("click", function () {
+                        const testURL = "https://quizzment.com/tetoegenface/"; // 공유할 테스트 주소
+                        const shareText = "Test if you are Teto or Egen❣️"; // 공유 텍스트
+
+                        if (navigator.share) {
+                            // 모바일 또는 지원 브라우저
+                            navigator.share({
+                                title: "Teto-Egen Face Test - Quizzment",
+                                text: shareText,
+                                url: testURL
+                            }).then(() => {
+                                console.log("✅ Share Success!");
+                            }).catch((error) => {
+                                console.error("❌ Share failed:", error);
+                            });
+                        } else {
+                            // PC 등 공유 API 미지원 브라우저
+                            navigator.clipboard.writeText(`${shareText} ${testURL}`).then(() => {
+                                alert("📌 Link copied! Share it with your friends.");
+                            }).catch((err) => {
+                                console.error("❌ Clipboard copy failed:", err);
+                            });
+                        }
+                    });
+                }
+            });
+        </script>
+</body>
+
+</html>
