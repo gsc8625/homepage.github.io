@@ -530,6 +530,41 @@
         margin: 0 auto;
         text-align: center;
     }
+
+    /* Mobile responsiveness for upload box */
+    @media screen and (max-width: 600px) {
+        .file-upload {
+            width: 98%;
+            padding: 2% 1%;
+            min-width: unset;
+            box-sizing: border-box;
+        }
+
+        .image-upload-wrap {
+            width: 98%;
+            min-width: unset;
+            height: auto;
+            padding: 10px 0;
+        }
+
+        .upload-text {
+            width: 95%;
+            font-size: 1rem;
+            padding: 0 2px;
+        }
+
+        .file-upload-image {
+            max-width: 90%;
+            max-height: 200px;
+        }
+
+        .custom-button {
+            min-width: 120px;
+            height: 48px;
+            font-size: 1rem;
+            padding: 10px 10px;
+        }
+    }
 </style>
 
 
