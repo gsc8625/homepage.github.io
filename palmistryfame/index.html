@@ -38,818 +38,827 @@
         gtag('js', new Date());
         gtag('config', 'UA-145482737-6');
     </script>
+    <script src="https://mon0127.disqus.com/embed.js" data-timestamp="1751519449458"></script>
+    <script src="https://c.disquscdn.com/next/embed/alfie_v4.63f1ab6d6b9d5807dc0c94ef3fe0b851.js" async=""
+        charset="UTF-8"></script>
     <script src="https://d-code.liadm.com/did-0049.min.js" async="" charset="UTF-8"></script>
-    <style>
-        body {
-            font-family: 'Jua', sans-serif;
-            background-color: white;
-            box-sizing: border-box;
-            color: #35465d;
-        }
-
-        .file-upload {
-            padding: 15% 3%;
-            margin: 0 auto;
-            border-radius: 10px;
-            border: solid 1.5px #f6f7fa;
-            background-color: #f6f7fa;
-        }
-
-        .file-upload-btn {
-            width: 100%;
-            margin: 0;
-            color: #fff;
-            background: #1FB264;
-            border: none;
-            padding: 10px;
-            border-radius: 4px;
-            border-bottom: 4px solid #15824B;
-            transition: all .2s ease;
-            outline: none;
-            text-transform: uppercase;
-            font-weight: 700;
-        }
-
-        .file-upload-btn:hover {
-            background: #1AA059;
-            color: #ffffff;
-            transition: all .2s ease;
-            cursor: pointer;
-        }
-
-        .file-upload-btn:active {
-            border: 0;
-            transition: all .2s ease;
-        }
-
-        .file-upload-content {
-            display: none;
-            text-align: center;
-        }
-
-        #loading {
-            display: none;
-        }
-
-        .file-upload-input {
-            position: absolute;
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            outline: none;
-            opacity: 0;
-            cursor: pointer;
-        }
-
-        .image-upload-wrap {
-            width: 60%;
-            margin: 0 auto;
-            position: relative;
-            object-fit: contain;
-            border-radius: 10px;
-            border: dashed 1.5px #35465d;
-            background-color: #ffffff;
-        }
-
-        .image-dropping,
-        .image-upload-wrap:hover {
-            background-color: #35465d82;
-            border: 1.5px dashed #ffffff;
-        }
-
-        .image-title-wrap {
-            padding: 0 15px 15px 15px;
-            color: #222;
-        }
-
-        .drag-text {
-            text-align: center;
-        }
-
-        .drag-text h3 {
-            font-weight: 500;
-            text-transform: uppercase;
-        }
-
-        .file-upload-image {
-            max-height: 60%;
-            max-width: 60%;
-            margin: auto;
-            padding: 10px;
-        }
-
-        .try-again-btn {
-            border-radius: 40px;
-            border: solid 1.5px #35465d;
-            background-color: #35465d;
-        }
-
-        .try-again-text {
-            display: block;
-            font-size: 1.5rem;
-            text-align: center;
-            color: #ffffff;
-            padding: 4px 15px;
-        }
-
-        .remove-image:hover {
-            background: #c13b2a;
-            color: #ffffff;
-            transition: all .2s ease;
-            cursor: pointer;
-        }
-
-        .remove-image:active {
-            border: 0;
-            transition: all .2s ease;
-        }
-
-        .navbar-light .navbar-brand {
-            line-height: 1.68;
-            text-align: left;
-            color: #35465d;
-        }
-
-        .navbar-light .navbar-toggler {
-            border-color: #ffffff;
-        }
-
-        .section {
-            margin-top: 50px;
-        }
-
-        .title {
-            line-height: 1.67;
-            text-align: center;
-            color: #0404B4;
-        }
-
-        .subtitle {
-            line-height: 1.53;
-            text-align: center;
-            color: #FF00BF;
-        }
-
-        /* On screens that are 600px or less, set the background color to olive */
-        @media screen and (max-width: 600px) {
-            html {
-                font-size: 10px;
-            }
-
-            .navbar-brand {
-                font-size: 2rem;
-            }
-        }
-
-
-        .youtube-link {
-            font-size: 1.5rem;
-            line-height: 1.71;
-            text-align: center;
-            color: #f73737;
-            text-decoration: underline;
-        }
-
-        .youtube-link:hover {
-            font-size: 1.5rem;
-            line-height: 1.71;
-            text-align: center;
-            color: #f73737;
-            text-decoration: underline;
-        }
-
-        .youtube-icon {
-            width: 30px;
-            height: 27.262px;
-        }
-
-        .upload {
-            width: 20%;
-        }
-
-        .upload-text {
-            width: 58%;
-            font-size: 1.5rem;
-            line-height: 1.53;
-            text-align: center;
-            color: #35465d;
-            margin: 0 auto;
-        }
-
-        .footer {
-            background-color: initial;
-            color: initial;
-        }
-
-        .bar-container {
-            height: 2.7rem;
-        }
-
-        .AA-box {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            width: 100%;
-            background-color: rgba(117, 204, 84, 0.2);
-        }
-
-        .AA-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            background-color: rgba(117, 204, 84, 1);
-        }
-
-        .BB-box {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            width: 100%;
-            background-color: rgba(117, 204, 84, 0.2);
-        }
-
-        .BB-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            background-color: rgba(117, 204, 84, 1);
-        }
-
-        .DD-box {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            width: 100%;
-            background-color: rgba(27, 175, 234, 0.2);
-        }
-
-        .bar-container position-relative container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            background-color: rgba(27, 175, 234, 1);
-        }
-
-        .CC-box {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            width: 100%;
-            background-color: rgba(251, 176, 59, 0.2);
-        }
-
-        .CC-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            background-color: rgba(251, 176, 59, 1);
-        }
-
-        .DD-box {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            width: 100%;
-            background-color: rgba(195, 140, 102, 0.2);
-        }
-
-        .DD-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            background-color: rgba(195, 140, 102, 1);
-        }
-
-        .EE-box {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            width: 100%;
-            background-color: rgba(49, 132, 155, 0.2);
-        }
-
-        .EE-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            background-color: rgba(49, 132, 155, 1);
-        }
-
-        .GG-box {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            width: 100%;
-            background-color: rgba(235, 166, 190, 0.2);
-        }
-
-        .GG-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            background-color: rgba(235, 166, 190, 1);
-        }
-
-        .FF-box {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            width: 100%;
-            background-color: rgba(117, 204, 84, 0.2);
-        }
-
-        .FF-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            background-color: rgba(117, 204, 84, 1);
-        }
-
-        .HH-box {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            width: 100%;
-            background-color: rgba(117, 204, 84, 0.2);
-        }
-
-        .HH-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            background-color: rgba(117, 204, 84, 1);
-        }
-
-        .II-box {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            width: 100%;
-            background-color: rgba(251, 176, 59, 0.2);
-        }
-
-        .II-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            background-color: rgba(251, 176, 59, 1);
-        }
-
-        .JJ-box {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            width: 100%;
-            background-color: rgba(195, 140, 102, 0.2);
-        }
-
-        .JJ-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            background-color: rgba(195, 140, 102, 1);
-        }
-
-        .KK-box {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            width: 100%;
-            background-color: rgba(49, 132, 155, 0.2);
-        }
-
-        .KK-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            background-color: rgba(49, 132, 155, 1);
-        }
-
-        .LL-box {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            width: 100%;
-            background-color: rgba(235, 166, 190, 0.2);
-        }
-
-        .LL-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            background-color: rgba(235, 166, 190, 1);
-        }
-
-        .MM-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            background-color: rgba(117, 204, 84, 1);
-        }
-
-        .MM-box {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            width: 100%;
-            background-color: rgba(117, 204, 84, 0.2);
-        }
-
-        .NN-box {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            width: 100%;
-            background-color: rgba(251, 176, 59, 0.2);
-        }
-
-        .NN-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            background-color: rgba(251, 176, 59, 1);
-        }
-
-        .OO-box {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            width: 100%;
-            background-color: rgba(195, 140, 102, 0.2);
-        }
-
-        .OO-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            background-color: rgba(195, 140, 102, 1);
-        }
-
-        .PP-box {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            width: 100%;
-            background-color: rgba(49, 132, 155, 0.2);
-        }
-
-        .PP-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            background-color: rgba(49, 132, 155, 1);
-        }
-
-        .QQ-box {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            width: 100%;
-            background-color: rgba(235, 166, 190, 0.2);
-        }
-
-        .QQ-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 2rem;
-            border-radius: 10px;
-            background-color: rgba(235, 166, 190, 1);
-        }
-
-        .percent-text {
-            font-size: 1rem;
-            color: #0404B4;
-        }
-
-        .animal-label {
-            width: 20%;
-            text-align: left;
-            height: 2rem;
-        }
-
-        #label-container {
-            width: 80%;
-            margin: 0 auto;
-        }
 
-        .result-message {
+<script async="" custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+</script>
+
+</head>
+
+<style>
+    body {
+        font-family: 'Jua', sans-serif;
+        background-color: white;
+        box-sizing: border-box;
+        color: #35465d;
+    }
+
+    .file-upload {
+        padding: 15% 3%;
+        margin: 0 auto;
+        border-radius: 10px;
+        border: solid 1.5px #f6f7fa;
+        background-color: #f6f7fa;
+    }
+
+    .file-upload-btn {
+        width: 100%;
+        margin: 0;
+        color: #fff;
+        background: #1FB264;
+        border: none;
+        padding: 10px;
+        border-radius: 4px;
+        border-bottom: 4px solid #15824B;
+        transition: all .2s ease;
+        outline: none;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+
+    .file-upload-btn:hover {
+        background: #1AA059;
+        color: #ffffff;
+        transition: all .2s ease;
+        cursor: pointer;
+    }
+
+    .file-upload-btn:active {
+        border: 0;
+        transition: all .2s ease;
+    }
+
+    .file-upload-content {
+        display: none;
+        text-align: center;
+    }
+
+    #loading {
+        display: none;
+    }
+
+    .file-upload-input {
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        outline: none;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .image-upload-wrap {
+        width: 60%;
+        margin: 0 auto;
+        position: relative;
+        object-fit: contain;
+        border-radius: 10px;
+        border: dashed 1.5px #35465d;
+        background-color: #ffffff;
+    }
+
+    .image-dropping,
+    .image-upload-wrap:hover {
+        background-color: #35465d82;
+        border: 1.5px dashed #ffffff;
+    }
+
+    .image-title-wrap {
+        padding: 0 15px 15px 15px;
+        color: #222;
+    }
+
+    .drag-text {
+        text-align: center;
+    }
+
+    .drag-text h3 {
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+
+    .file-upload-image {
+        max-height: 60%;
+        max-width: 60%;
+        margin: auto;
+        padding: 10px;
+    }
+
+    .try-again-btn {
+        border-radius: 40px;
+        border: solid 1.5px #35465d;
+        background-color: #35465d;
+    }
+
+    .try-again-text {
+        display: block;
+        font-size: 1.5rem;
+        text-align: center;
+        color: #ffffff;
+        padding: 4px 15px;
+    }
+
+    .remove-image:hover {
+        background: #c13b2a;
+        color: #ffffff;
+        transition: all .2s ease;
+        cursor: pointer;
+    }
+
+    .remove-image:active {
+        border: 0;
+        transition: all .2s ease;
+    }
+
+    .navbar-light .navbar-brand {
+        line-height: 1.68;
+        text-align: left;
+        color: #35465d;
+    }
+
+    .navbar-light .navbar-toggler {
+        border-color: #ffffff;
+    }
+
+    .section {
+        margin-top: 50px;
+    }
+
+    .title {
+        line-height: 1.67;
+        text-align: center;
+        color: #0404B4;
+    }
+
+    .subtitle {
+        line-height: 1.53;
+        text-align: center;
+        color: #FF00BF;
+    }
+
+    /* On screens that are 600px or less, set the background color to olive */
+    @media screen and (max-width: 600px) {
+        html {
+            font-size: 10px;
+        }
+
+        .navbar-brand {
             font-size: 2rem;
         }
+    }
 
 
-        .animal-explain {
-            font-size: 1.5rem;
-        }
+    .youtube-link {
+        font-size: 1.5rem;
+        line-height: 1.71;
+        text-align: center;
+        color: #f73737;
+        text-decoration: underline;
+    }
 
-        .animal-title-animal-title {
-            color: #5F4C0B;
-        }
+    .youtube-link:hover {
+        font-size: 1.5rem;
+        line-height: 1.71;
+        text-align: center;
+        color: #f73737;
+        text-decoration: underline;
+    }
 
-        .AA-animal-celeb {
-            color: #3ba363;
-            font-size: 1.2rem;
-        }
+    .youtube-icon {
+        width: 30px;
+        height: 27.262px;
+    }
 
-        .BB-animal-title {
-            color: #3ba363;
-        }
+    .upload {
+        width: 20%;
+    }
 
-        .BB-animal-celeb {
-            color: #3ba363;
-            font-size: 1.2rem;
-        }
+    .upload-text {
+        width: 58%;
+        font-size: 1.5rem;
+        line-height: 1.53;
+        text-align: center;
+        color: #35465d;
+        margin: 0 auto;
+    }
 
-        .CC-animal-title {
-            color: #ff6c0a;
-        }
+    .footer {
+        background-color: initial;
+        color: initial;
+    }
 
-        .CC-animal-celeb {
-            color: #ff6c0a;
-            font-size: 1.2rem;
-        }
+    .bar-container {
+        height: 2.7rem;
+    }
 
-        .DD-animal-title {
-            color: #DF3A01;
-        }
+    .AA-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        width: 100%;
+        background-color: rgba(117, 204, 84, 0.2);
+    }
 
-        .DD-animal-celeb {
-            color: #F5A9A9;
-            font-size: 1.2rem;
-        }
+    .AA-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        background-color: rgba(117, 204, 84, 1);
+    }
 
-        .EE-animal-title {
-            color: #548dd4;
-        }
+    .BB-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        width: 100%;
+        background-color: rgba(117, 204, 84, 0.2);
+    }
 
-        .EE-animal-celeb {
-            color: #548dd4;
-            font-size: 1.2rem;
-        }
+    .BB-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        background-color: rgba(117, 204, 84, 1);
+    }
 
-        .FF-animal-title {
-            color: #e56995;
-        }
+    .DD-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        width: 100%;
+        background-color: rgba(27, 175, 234, 0.2);
+    }
 
-        .FF-animal-celeb {
-            color: #e56995;
-            font-size: 1.2rem;
-        }
+    .bar-container position-relative container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        background-color: rgba(27, 175, 234, 1);
+    }
 
-        .GG-animal-title {
-            color: #9b6b43;
-        }
+    .CC-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        width: 100%;
+        background-color: rgba(251, 176, 59, 0.2);
+    }
 
-        .GG-animal-celeb {
-            color: #9b6b43;
-            font-size: 1.2rem;
-        }
+    .CC-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        background-color: rgba(251, 176, 59, 1);
+    }
 
-        .HH-animal-title {
-            color: #31849b;
-        }
+    .DD-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        width: 100%;
+        background-color: rgba(195, 140, 102, 0.2);
+    }
 
-        .HH-animal-celeb {
-            color: #31849b;
-            font-size: 1.2rem;
-        }
+    .DD-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        background-color: rgba(195, 140, 102, 1);
+    }
 
-        .II-animal-celeb {
-            color: #3ba363;
-            font-size: 1.2rem;
-        }
+    .EE-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        width: 100%;
+        background-color: rgba(49, 132, 155, 0.2);
+    }
 
-        .KK-animal-title {
-            color: #3ba363;
-        }
+    .EE-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        background-color: rgba(49, 132, 155, 1);
+    }
 
-        .KK-animal-celeb {
-            color: #3ba363;
-            font-size: 1.2rem;
-        }
+    .GG-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        width: 100%;
+        background-color: rgba(235, 166, 190, 0.2);
+    }
 
-        .LL-animal-title {
-            color: #ff6c0a;
-        }
+    .GG-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        background-color: rgba(235, 166, 190, 1);
+    }
 
-        .LL-animal-celeb {
-            color: #ff6c0a;
-            font-size: 1.2rem;
-        }
+    .FF-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        width: 100%;
+        background-color: rgba(117, 204, 84, 0.2);
+    }
 
-        .MM-animal-title {
-            color: #DF3A01;
-        }
+    .FF-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        background-color: rgba(117, 204, 84, 1);
+    }
 
-        .MM-animal-celeb {
-            color: #F5A9A9;
-            font-size: 1.2rem;
-        }
+    .HH-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        width: 100%;
+        background-color: rgba(117, 204, 84, 0.2);
+    }
 
-        .NN-animal-title {
-            color: #548dd4;
-        }
+    .HH-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        background-color: rgba(117, 204, 84, 1);
+    }
 
-        .NN-animal-celeb {
-            color: #548dd4;
-            font-size: 1.2rem;
-        }
+    .II-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        width: 100%;
+        background-color: rgba(251, 176, 59, 0.2);
+    }
 
-        .OO-animal-title {
-            color: #e56995;
-        }
+    .II-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        background-color: rgba(251, 176, 59, 1);
+    }
 
-        .OO-animal-celeb {
-            color: #e56995;
-            font-size: 1.2rem;
-        }
+    .JJ-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        width: 100%;
+        background-color: rgba(195, 140, 102, 0.2);
+    }
 
-        .PP-animal-title {
-            color: #9b6b43;
-        }
+    .JJ-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        background-color: rgba(195, 140, 102, 1);
+    }
 
-        .PP-animal-celeb {
-            color: #9b6b43;
-            font-size: 1.2rem;
-        }
+    .KK-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        width: 100%;
+        background-color: rgba(49, 132, 155, 0.2);
+    }
 
-        .QQ-animal-title {
-            color: #31849b;
-        }
+    .KK-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        background-color: rgba(49, 132, 155, 1);
+    }
 
-        .QQ-animal-celeb {
-            color: #31849b;
-            font-size: 1.2rem;
-        }
+    .LL-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        width: 100%;
+        background-color: rgba(235, 166, 190, 0.2);
+    }
 
-        /* gender */
-        input#gender {
-            display: none;
-        }
+    .LL-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        background-color: rgba(235, 166, 190, 1);
+    }
 
-        label {
-            cursor: pointer;
-            display: inline-block;
-            width: 90px;
-            height: 41px;
-            box-shadow: 0 0 0 8px #e5e9ea inset;
-            border-radius: 30px;
-            position: relative;
-        }
+    .MM-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        background-color: rgba(117, 204, 84, 1);
+    }
 
-        .knob {
-            position: absolute;
-            width: 41px;
-            top: 0;
-            left: 0;
-            height: 41px;
-            border-radius: 50%;
-            box-shadow: 0 0 0 8px #f470a7 inset;
-            background-color: #fbd4e6;
-            transition: 0.3s;
-        }
+    .MM-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        width: 100%;
+        background-color: rgba(117, 204, 84, 0.2);
+    }
 
-        .knob>i {
-            position: absolute;
-            width: 4px;
-            height: 18px;
-            top: 100%;
-            background-color: #f470a7;
-            left: calc(50% - 2px);
-        }
+    .NN-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        width: 100%;
+        background-color: rgba(251, 176, 59, 0.2);
+    }
 
-        .knob>i:before,
-        .knob>i:after {
-            width: 6px;
-            position: absolute;
-            top: 42%;
-            content: "";
-            height: 4px;
-            background-color: #f470a7;
-        }
+    .NN-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        background-color: rgba(251, 176, 59, 1);
+    }
 
-        .knob>i:before {
-            left: 4px;
-        }
+    .OO-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        width: 100%;
+        background-color: rgba(195, 140, 102, 0.2);
+    }
 
-        .knob>i:after {
-            left: -6px;
-        }
+    .OO-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        background-color: rgba(195, 140, 102, 1);
+    }
 
-        input:checked+label>.knob {
-            box-shadow: 0 0 0 8px #a1c6dd inset;
-            background-color: #e2ecf4;
-            transform: translateX(49px) rotate(-140deg);
-        }
+    .PP-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        width: 100%;
+        background-color: rgba(49, 132, 155, 0.2);
+    }
 
-        input:checked+label>.knob>i {
-            background-color: #a1c6dd;
-        }
+    .PP-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        background-color: rgba(49, 132, 155, 1);
+    }
 
-        input:checked+label>.knob>i:after,
-        input:checked+label>.knob>i:before {
-            background-color: #a1c6dd;
-        }
+    .QQ-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        width: 100%;
+        background-color: rgba(235, 166, 190, 0.2);
+    }
 
-        input:checked+label>.knob>i:after {
-            top: 14.5px;
-            width: 12px;
-            left: -7px;
-            transform: rotate(45deg);
-        }
+    .QQ-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        border-radius: 10px;
+        background-color: rgba(235, 166, 190, 1);
+    }
 
-        input:checked+label>.knob>i:before {
-            top: 13px;
-            width: 12px;
-            left: 0px;
-            transform: rotate(134deg);
-        }
+    .percent-text {
+        font-size: 1rem;
+        color: #0404B4;
+    }
 
-        .justify-content-center {
-            color: #fd7e14;
-            text-align: center;
-        }
+    .animal-label {
+        width: 20%;
+        text-align: left;
+        height: 2rem;
+    }
 
-        .ad-banner {
-            max-width: 320px;
-        }
+    #label-container {
+        width: 80%;
+        margin: 0 auto;
+    }
 
-        .mt-1 {
-            color: #fd7e14;
-            text-align: center;
-        }
-    </style>
+    .result-message {
+        font-size: 2rem;
+    }
+
+
+    .animal-explain {
+        font-size: 1.5rem;
+    }
+
+    .animal-title-animal-title {
+        color: #5F4C0B;
+    }
+
+    .AA-animal-celeb {
+        color: #3ba363;
+        font-size: 1.2rem;
+    }
+
+    .BB-animal-title {
+        color: #3ba363;
+    }
+
+    .BB-animal-celeb {
+        color: #3ba363;
+        font-size: 1.2rem;
+    }
+
+    .CC-animal-title {
+        color: #ff6c0a;
+    }
+
+    .CC-animal-celeb {
+        color: #ff6c0a;
+        font-size: 1.2rem;
+    }
+
+    .DD-animal-title {
+        color: #DF3A01;
+    }
+
+    .DD-animal-celeb {
+        color: #F5A9A9;
+        font-size: 1.2rem;
+    }
+
+    .EE-animal-title {
+        color: #548dd4;
+    }
+
+    .EE-animal-celeb {
+        color: #548dd4;
+        font-size: 1.2rem;
+    }
+
+    .FF-animal-title {
+        color: #e56995;
+    }
+
+    .FF-animal-celeb {
+        color: #e56995;
+        font-size: 1.2rem;
+    }
+
+    .GG-animal-title {
+        color: #9b6b43;
+    }
+
+    .GG-animal-celeb {
+        color: #9b6b43;
+        font-size: 1.2rem;
+    }
+
+    .HH-animal-title {
+        color: #31849b;
+    }
+
+    .HH-animal-celeb {
+        color: #31849b;
+        font-size: 1.2rem;
+    }
+
+    .II-animal-celeb {
+        color: #3ba363;
+        font-size: 1.2rem;
+    }
+
+    .KK-animal-title {
+        color: #3ba363;
+    }
+
+    .KK-animal-celeb {
+        color: #3ba363;
+        font-size: 1.2rem;
+    }
+
+    .LL-animal-title {
+        color: #ff6c0a;
+    }
+
+    .LL-animal-celeb {
+        color: #ff6c0a;
+        font-size: 1.2rem;
+    }
+
+    .MM-animal-title {
+        color: #DF3A01;
+    }
+
+    .MM-animal-celeb {
+        color: #F5A9A9;
+        font-size: 1.2rem;
+    }
+
+    .NN-animal-title {
+        color: #548dd4;
+    }
+
+    .NN-animal-celeb {
+        color: #548dd4;
+        font-size: 1.2rem;
+    }
+
+    .OO-animal-title {
+        color: #e56995;
+    }
+
+    .OO-animal-celeb {
+        color: #e56995;
+        font-size: 1.2rem;
+    }
+
+    .PP-animal-title {
+        color: #9b6b43;
+    }
+
+    .PP-animal-celeb {
+        color: #9b6b43;
+        font-size: 1.2rem;
+    }
+
+    .QQ-animal-title {
+        color: #31849b;
+    }
+
+    .QQ-animal-celeb {
+        color: #31849b;
+        font-size: 1.2rem;
+    }
+
+    /* gender */
+    input#gender {
+        display: none;
+    }
+
+    label {
+        cursor: pointer;
+        display: inline-block;
+        width: 90px;
+        height: 41px;
+        box-shadow: 0 0 0 8px #e5e9ea inset;
+        border-radius: 30px;
+        position: relative;
+    }
+
+    .knob {
+        position: absolute;
+        width: 41px;
+        top: 0;
+        left: 0;
+        height: 41px;
+        border-radius: 50%;
+        box-shadow: 0 0 0 8px #f470a7 inset;
+        background-color: #fbd4e6;
+        transition: 0.3s;
+    }
+
+    .knob>i {
+        position: absolute;
+        width: 4px;
+        height: 18px;
+        top: 100%;
+        background-color: #f470a7;
+        left: calc(50% - 2px);
+    }
+
+    .knob>i:before,
+    .knob>i:after {
+        width: 6px;
+        position: absolute;
+        top: 42%;
+        content: "";
+        height: 4px;
+        background-color: #f470a7;
+    }
+
+    .knob>i:before {
+        left: 4px;
+    }
+
+    .knob>i:after {
+        left: -6px;
+    }
+
+    input:checked+label>.knob {
+        box-shadow: 0 0 0 8px #a1c6dd inset;
+        background-color: #e2ecf4;
+        transform: translateX(49px) rotate(-140deg);
+    }
+
+    input:checked+label>.knob>i {
+        background-color: #a1c6dd;
+    }
+
+    input:checked+label>.knob>i:after,
+    input:checked+label>.knob>i:before {
+        background-color: #a1c6dd;
+    }
+
+    input:checked+label>.knob>i:after {
+        top: 14.5px;
+        width: 12px;
+        left: -7px;
+        transform: rotate(45deg);
+    }
+
+    input:checked+label>.knob>i:before {
+        top: 13px;
+        width: 12px;
+        left: 0px;
+        transform: rotate(134deg);
+    }
+
+    .justify-content-center {
+        color: #fd7e14;
+        text-align: center;
+    }
+
+    .ad-banner {
+        max-width: 320px;
+    }
+
+    .mt-1 {
+        color: #fd7e14;
+        text-align: center;
+    }
+</style>
 </head>
 
 
@@ -1047,7 +1056,7 @@
                     };
                     reader.readAsDataURL(input.files[0]);
                     init().then(function () {
-                        console.log("analyze complete");
+                        console.log("hello");
                         predict();
                         $('#loading').hide();
                     });
@@ -1239,7 +1248,254 @@
                     var labelTitle;
                     switch (prediction[i].className) {
                         case "AA":
-                            labelTitle = "Presidential M Palm"
+                            labelTitle = "President M Palm"
+                            break;
+                        case "BB":
+                            labelTitle = "Winner of Competition"
+                            break;
+                        case "CC":
+                            labelTitle = "Wealth by Connections"
+                            break;
+                        case "DD":
+                            labelTitle = "Cool Personality"
+                            break;
+                        case "EE":
+                            labelTitle = "Big Mood Swings"
+                            break;
+                        case "FF":
+                            labelTitle = "Lingering Feelings"
+                            break;
+                        case "GG":
+                            labelTitle = "Trend Leader"
+                            break;
+                        case "HH":
+                            labelTitle = "Clumsy"
+                            break;
+                        case "II":
+                            labelTitle = "Stamina King!"
+                            break;
+                        case "JJ":
+                            labelTitle = "Longevity?"
+                            break;
+                        case "KK":
+                            labelTitle = "Self-made Type"
+                            break;
+                        case "LL":
+                            labelTitle = "Networking King"
+                            break;
+                        case "MM":
+                            labelTitle = "Second Generation Chaebol?"
+                            break;
+                        case "NN":
+                            labelTitle = "Principled"
+                            break;
+                        case "OO":
+                            labelTitle = "Artist?"
+                            break;
+                        case "PP":
+                            labelTitle = "All-rounder!"
+                            break;
+                        case "QQ":
+                            labelTitle = "Ordinary, Average"
+                            break;
+                        default:
+                            labelTitle = "Unknown"
+                    }
+                    var label = "<div class='animal-label d-flex align-items-center'>" + labelTitle + "</div>"
+                    var bar = "<div class='bar-container position-relative container'><div class='" + prediction[i].className + "-box'></div><div class='d-flex justify-content-center align-items-center " + prediction[i].className + "-bar' style='width: " + barWidth + "'><span class='d-block percent-text'>" + Math.round(prediction[i].probability.toFixed(2) * 100) + "%</span></div></div>"
+                    labelContainer.childNodes[i].innerHTML = label + bar;
+                }
+            }
+        </script>
+        <script>
+            function iosApp() {
+                document.getElementById("coupang").style.display = "none";
+                $("#coupang ins").hide();
+                document.getElementById("addThis").style.display = "none";
+                document.getElementById("disqus_thread").style.display = "none";
+                var kakao = document.getElementsByClassName("kakao_ad_area");
+                for (var i = 0; i < kakao.length; i++) {
+                    if (kakao[i]) {
+                        kakao[i].style.display = "none";
+                    }
+                }
+                document.getElementById("yotube-top-link").style.display = "none";
+                document.getElementById("yotube-mid-link").style.display = "none";
+                document.getElementById("yotube-bottom-link").style.display = "none";
+            }
+        </script>
+        <script>
+            let URL;
+            const urlAtype = "https://teachablemachine.withgoogle.com/models/4p8fjgxUe/";
+            const urlBtype = "https://teachablemachine.withgoogle.com/models/qf8a4ixR9/";
+            const urlCtype = "https://teachablemachine.withgoogle.com/models/ZHSMLOYyJ/";
+            const urlDtype = "https://teachablemachine.withgoogle.com/models/ui8zV8pmi/";
+            const urlEtype = "https://teachablemachine.withgoogle.com/models/lLacq8GEp/";
+
+            let model, webcam, labelContainer, maxPredictions;
+            async function init() {
+                if (document.getElementById("gender").checked) {
+
+                } else {
+                    URL = urlAtype;
+                }
+                const modelURL = URL + "model.json";
+                const metadataURL = URL + "metadata.json";
+                model = await tmImage.load(modelURL, metadataURL);
+                maxPredictions = model.getTotalClasses();
+                labelContainer = document.getElementById("label-container");
+                for (let i = 0; i < maxPredictions; i++) {
+                    var element = document.createElement("div")
+                    element.classList.add("d-flex");
+                    labelContainer.appendChild(element);
+                }
+            }
+            async function predict() {
+                var image = document.getElementById("face-image")
+                const prediction = await model.predict(image, false);
+                prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
+                console.log(prediction[0].className);
+                var resultTitle, resultExplain, resultCeleb;
+                if (document.getElementById("gender").checked) {
+                } else {
+
+                    gtag('event', 'Palmistry Test Performed', {
+                        'event_category': 'Palmistry Test Performed',
+                        'event_label': 'Heart Line'
+                    });
+                    switch (prediction[0].className) {
+                        case "AA":
+                            resultTitle = "Become wealthy with perfect balance"
+                            resultExplain = "The M-shaped palm is not so much a rare palm as it is a shape that appears when the four major lines—heart, head, life, and fate—are all balanced and distinct. It indicates a healthy mind and body, so you will do well in whatever you do. If you have this palm, seize the perfect timing and use it as a stepping stone to success."
+                            resultCeleb = "If you have a balanced M-shaped palm"
+                            gtag('event', 'Balanced M-shaped palm', { 'event_category': 'Heart Line Result' });
+                            break;
+
+                        case "BB":
+                            resultTitle = "Become wealthy through competition"
+                            resultExplain = "The fate line is found in people with a strong desire for achievement. Pressure from competition and performance can be stressful, but people with this line know how to enjoy it. Especially, they feel great joy when they win. If you make money by winning, you have a palm that can make you rich."
+                            resultCeleb = "Become wealthy through competition"
+                            gtag('event', 'Become wealthy through competition', { 'event_category': 'Heart Line Result' });
+                            break;
+
+                        case "CC":
+                            resultTitle = "Become wealthy through relationships and connections"
+                            resultExplain = "The sun line is found in people who are highly skilled in relationships. People with this line are outgoing and have the ability to accept others and lead the atmosphere. If you have this line, cherish your connections. Money will naturally follow through your network!"
+                            resultCeleb = "If you have a sun line coming down from the ring finger"
+                            gtag('event', 'Sun line from ring finger', { 'event_category': 'Heart Line Result' });
+                            break;
+
+                        case "DD":
+                            resultTitle = "Easygoing to the core!!"
+                            resultExplain = "You have a straightforward and cool personality. You are the type who never looks back on what's over, practicing a 'let it go' mindset. However, your bluntness may sometimes make those around you feel a bit left out."
+                            resultCeleb = "Clean and distinct heart line: Kang Dong-won, Kang Min-kyung, Kang So-ra, Kim Soo-hyun..."
+                            gtag('event', 'Clean and distinct heart line', { 'event_category': 'Heart Line Result' });
+                            break;
+
+                        case "EE":
+                            resultTitle = "Picky but popular!"
+                            resultExplain = "You have big emotional ups and downs, and sometimes you feel different emotions in the same situation, which can be confusing. But if you use this as a strength, you can flexibly change your emotions in a positive direction!"
+                            resultCeleb = "Heart line split or two parallel lines: Yoo Ah-in, Kim Hee-chul, Jo Jin-woong, Lee Hyo-ri..."
+                            gtag('event', 'Heart line split or two parallel lines', { 'event_category': 'Heart Line Result' });
+                            break;
+
+                        case "FF":
+                            resultTitle = "Winner! Haha!"
+                            resultExplain = "Ta-da! Winner! You have a palm with lingering feelings. Are you still replaying past events and embarrassing moments? Try to let go and move on. You are actually more caring than you appear, but you don't show it, so you may seem like a tsundere!"
+                            resultCeleb = "Lines that are spread out or overlapping: Lee Seo-jin, Han Ji-min, Choi Woo-shik, Jung Suk-won..."
+                            gtag('event', 'Heart line split or two parallel lines', { 'event_category': 'Heart Line Result' });
+                            break;
+                        case "GG":
+                            resultTitle = "Life line made up of fine lines"
+                            resultExplain = "You are a trend leader...! You never miss any cold or minor illness that comes around... Because your body is sensitive, you need to always check and take care of your health."
+                            resultCeleb = "Life line made up of fine lines (celebrity): Han Ye-seul, Yoona, Park Bo-gum, Jung Yu-mi, Choi Chang-min..."
+                            gtag('event', 'Life line made up of fine lines', { 'event_category': 'Heart Line Result' });
+                            break;
+                        case "HH":
+                            resultTitle = "Another line cuts across and breaks the life line"
+                            resultExplain = "Oops, ouch~! You keep bumping into things and getting hurt. Is your big toe okay? This palm has many accidents, so be more careful and act cautiously."
+                            resultCeleb = "Another line cuts across and breaks the life line (celebrity): Yoo Byung-jae, IU, Choi Ji-woo, Kim Dong-wan..."
+                            gtag('event', 'Another line cuts across and breaks the life line', { 'event_category': 'Heart Line Result' });
+                            break;
+                        case "II":
+                            resultTitle = "Double life lines"
+                            resultExplain = "You are a stamina king! No matter what you do, you never get tired. Even when everyone else catches a cold, you are fine, and when you get excited, you keep going to the next round, making it hard for others to keep up."
+                            resultCeleb = "Double life lines (celebrity): Jackson, Jang Hyuk, Lee Yu-ri, Kim Jong-kook, Soyou..."
+                            gtag('event', 'Double life lines', { 'event_category': 'Heart Line Result' });
+                            break;
+                        case "JJ":
+                            resultTitle = "Thick and bold life line"
+                            resultExplain = "Wow~ Living a long life is just like this. You have a palm that shows you were born with very good health."
+                            resultCeleb = "Thick and bold life line (celebrity): Kang Ho-dong, Song Joong-ki, Song Hye-kyo, Kim Sa-rang, Won Bin..."
+                            gtag('event', 'Thick and bold life line', { 'event_category': 'Heart Line Result' });
+                            break;
+                        case "KK":
+                            resultTitle = "Fate line running straight up"
+                            resultExplain = "You are strong and persistent, able to achieve success on your own. It may be a lonely road, but you can succeed if you start your own business! Even if you work with others, it's best if you lead. You are less likely to get lucky breaks, so avoid investing money in things you don't know well."
+                            resultCeleb = "Fate line running straight up (celebrity): Jung Ji-hoon (Rain), Kwon Sang-woo, Lee Hyo-ri, Jang Yoon-jung, Jung Woo-sung..."
+                            gtag('event', 'Fate line running straight up', { 'event_category': 'Heart Line Result' });
+                            break;
+                        case "LL":
+                            resultTitle = "Fate line starting from the base of the ring finger"
+                            resultExplain = "If your fate line starts from the base of the ring finger and curves slightly, you can find opportunities for success through help from others or new encounters. Opening your mind and meeting 다양한 사람들은 성공의 열쇠입니다. 동호회 가입이나 단체 활동 참여가 도움이 될 수 있으며, 사람들을 자주 만나는 일이 좋은 직업입니다."
+                            resultCeleb = "Fate line starting from the base of the ring finger (celebrity): Yoo Jae-suk, Somi, Jae-kyung, Zico..."
+                            gtag('event', 'Fate line starting from the base of the ring finger', { 'event_category': 'Heart Line Result' });
+                            break;
+                        case "MM":
+                            resultTitle = "Fate line starting from the base of the thumb"
+                            resultExplain = "People with a fate line starting from the base of the thumb are destined to succeed with help from family or close acquaintances. The closer someone is, the easier it is to take them for granted, but being more considerate to those around you is the shortcut to success. Pay more attention to your parents, siblings, or close friends—success is closer than you think."
+                            resultCeleb = "Fate line starting from the base of the thumb (celebrity): Lee Seo-jin, Shin Joo-ah, Choi Si-won..."
+                            gtag('event', 'Fate line starting from the base of the thumb', { 'event_category': 'Heart Line Result' });
+                            break;
+                        case "NN":
+                            resultTitle = "Horizontal head line"
+                            resultExplain = "People with a head line that runs horizontally from the start of the life line have a logical way of thinking. They are interested in clear rights and wrongs. They are strong in subjects with clear causes and effects, but may be confused by subjective or changing problems. If you build a solid foundation in advance, you can overcome this weakness. No cramming!"
+                            resultCeleb = "Horizontal head line (celebrity): BoA, Jung Yun-ho, Ji Sung, Oh Seung-ah..."
+                            gtag('event', 'Horizontal head line', { 'event_category': 'Heart Line Result' });
+                            break;
+                        case "OO":
+                            resultTitle = "Downward head line"
+                            resultExplain = "People whose head line bends toward the wrist are visually oriented and sensitive. They use their flexible thinking to easily understand difficult parts in their favorite fields. But they can't do what they don't like. If you have to study something you don't want to, try to find something you like about it, like cute stationery or a favorite teacher's lecture."
+                            resultCeleb = "Downward head line (celebrity): Kim Gun-mo, Soo Ae, Yeo Jin-goo..."
+                            gtag('event', 'Downward head line', { 'event_category': 'Heart Line Result' });
+                            break;
+                        case "PP":
+                            resultTitle = "Y-shaped head line"
+                            resultExplain = "If your head line splits into a Y shape, you are a multi-talented person with many interests and abilities. But you may have trouble focusing on one thing, so be careful. If you get bored easily when studying one thing for a long time, try studying several things at once—it might help!"
+                            resultCeleb = "Y-shaped head line (celebrity): G-Dragon, Lee Seung-gi, Uee, Kang Min-kyung..."
+                            gtag('event', 'Y-shaped head line', { 'event_category': 'Heart Line Result' });
+                            break;
+                        case "QQ":
+                            resultTitle = "Gently curved head line"
+                            resultExplain = "A gently curved head line indicates an ordinary and steady personality. You play when others play and study when others study, and your grades reflect your effort. But you don't have a hard time studying, and your concentration isn't weak, so if you try a little harder than others, you can achieve great results. Instead of hoping for luck, work hard to achieve your dreams!"
+                            resultCeleb = "Gently curved head line (celebrity): Go Ara, Yuri, Gong Yoo, Park Shin-yang..."
+                            gtag('event', 'Gently curved head line', { 'event_category': 'Heart Line Result' });
+                            break;
+                        default:
+                            resultTitle = "Unknown"
+                            resultExplain = ""
+                            resultCeleb = ""
+                            gtag('event', 'Unknown heart line result', { 'event_category': 'Heart Line Result' });
+                    }
+
+                }
+                var title = "<div class='" + prediction[0].className + "-animal-title'>" + resultTitle + "</div>"
+                var explain = "<div class='animal-explain pt-2'>" + resultExplain + "</div>"
+                var celeb = "<div class='" + prediction[0].className + "-animal-celeb pt-2 pb-2'>" + resultCeleb + "</div>"
+                $('.result-message').html(title + explain + celeb);
+                var barWidth;
+                for (let i = 0; i < maxPredictions; i++) {
+                    if (prediction[i].probability.toFixed(2) > 0.1) {
+                        barWidth = Math.round(prediction[i].probability.toFixed(2) * 100) + "%";
+                    } else if (prediction[i].probability.toFixed(2) >= 0.01) {
+                        barWidth = "4%"
+                    } else {
+                        barWidth = "3%"
+                    }
+                    var labelTitle;
+                    switch (prediction[i].className) {
+                        case "AA":
+                            labelTitle = "President M Palm"
                             break;
                         case "BB":
                             labelTitle = "Winner of Competition"
