@@ -923,7 +923,7 @@
             <div class="pt-3 image-title-wrap">
                 <button type="button p-2" class="try-again-btn" onclick="gaReload1();" data-toggle="modal"
                     data-target="#adModal">
-                    <span class="try-again-text">Retry with another photo</span>
+                    <span class="try-again-text" onclick="location.reload();">Retry with another photo</span>
                 </button>
             </div>
         </div>
@@ -978,44 +978,7 @@
         }
     </script>
     <!-- Modal -->
-    <div class="modal fade" id="adModal" tabindex="-1" role="dialog" aria-labelledby="adModalLabel" aria-hidden="true"
-        style="display: none !important; min-height: 0px !important; height: 0px !important; overflow: hidden !important; opacity: 1 !important; position: relative !important; padding-bottom: 0px; padding-top: 0px; transition: opacity 0.45s;">
-        <div class="modal-dialog" role="document" style="visibility: hidden;">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="adModalLabel">(AD) Advertisement - Please press retry one more time.
-                    </h5>
-
-
-
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body d-flex justify-content-center">
-
-                    <div </div>class="modal-footer d-flex justify-content-center">
-                        <button type="button p-2" class="try-again-btn" onclick="gaReload2();">
-                            <span class="try-again-text">Retry with another photo</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div style="inset: 0px; position: absolute;"></div>
-        </div>
-        <script>
-            function gaReload1() {
-                gtag('event', '다른 사진으로 재시도 1차', {
-                    'event_category': '다른 사진으로 재시도'
-                });
-            }
-            function gaReload2() {
-                gtag('event', '다른 사진으로 재시도 2차', {
-                    'event_category': '다른 사진으로 재시도'
-                });
-                window.location.reload();
-            }
-        </script>
+    
         <script>
             (function () {
                 var d = document,
@@ -1495,7 +1458,7 @@
                     var labelTitle;
                     switch (prediction[i].className) {
                         case "AA":
-                            labelTitle = "President M Palm"
+                            labelTitle = "President Palm"
                             break;
                         case "BB":
                             labelTitle = "Winner of Competition"
